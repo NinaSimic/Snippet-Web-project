@@ -1,0 +1,15 @@
+resources:
+  - name: git-repo
+    type: git
+    source:
+      uri: https://github.com/michl-b/spring-boot-sample-data-jpa-h2.git
+      branch: master
+
+jobs:
+  - name: package
+    plan:
+    - get: git-repo
+      trigger: true
+    - task: package
+      privileged: true
+      file: git-repo/concourse-pipeline/package.yml
