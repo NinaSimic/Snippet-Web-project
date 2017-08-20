@@ -16,11 +16,13 @@ public class Snippet {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "clip", nullable = false)
+    @Lob
+    @Column(name = "clip", nullable = false, length=8092)
     private String clip;
 
-    @Column(name = "language", nullable = false)
-    private String language;
+    @ManyToOne
+    @JoinColumn(name = "language", nullable = false)
+    private Language language;
 
     @Column(name = "url_reporsitory", nullable = false)
     private String url_reporsitory;
@@ -38,7 +40,7 @@ public class Snippet {
     public Snippet() {
     }
 
-    public Snippet(String description, String clip, String language, String url_reporsitory, Date end_date, List<Comment> comments, User user) {
+    public Snippet(String description, String clip, Language language, String url_reporsitory, Date end_date, List<Comment> comments, User user) {
         this.description = description;
         this.clip = clip;
         this.language = language;
@@ -72,11 +74,11 @@ public class Snippet {
         this.clip = clip;
     }
 
-    public String getLanguage() {
+    public Language getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(Language language) {
         this.language = language;
     }
 
@@ -118,9 +120,11 @@ public class Snippet {
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", clip='" + clip + '\'' +
-                ", language='" + language + '\'' +
+                ", language=" + language +
                 ", url_reporsitory='" + url_reporsitory + '\'' +
                 ", end_date=" + end_date +
+                ", comments=" + comments +
+                ", user=" + user +
                 '}';
     }
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "person")
+@Table(name = "user")
 public class User {
 
   @Id
@@ -14,25 +14,25 @@ public class User {
   @Column(name = "ID")
   private Long id;
 
-  @Column(name = "USERNAME", nullable = false, unique = true)
+  @Column(name = "username", nullable = false, unique = true)
   private String username;
 
-  @Column(name = "PASSWORD", nullable = false)
+  @Column(name = "password", nullable = false)
   private String password;
 
-  @Column(name = "FIRSTNAME", nullable = false)
+  @Column(name = "firstname", nullable = false)
   private String firstname;
 
-  @Column(name = "LASTNAME", nullable = false)
+  @Column(name = "lastname", nullable = false)
   private String lastname;
 
-  @Column(name = "PHONENUMBER", nullable = false)
-  private String phoneNumber;
+  @Column(name = "phone", nullable = false)
+  private String phone;
 
-  @Column(name = "EMAIL", nullable = false)
+  @Column(name = "email", nullable = false)
   private String email;
 
-  @Column(name = "ADDRESS", nullable = false)
+  @Column(name = "address", nullable = false)
   private String address;
 
   @Column(name = "addressNumb", nullable = false)
@@ -44,7 +44,7 @@ public class User {
   @Column(name = "country", nullable = false)
   private String country;
 
-  @Column(name = "IMAGEURL", nullable = false)
+  @Column(name = "imageUrl", nullable = false)
   private String imageUrl;
 
   @com.sun.istack.internal.NotNull
@@ -54,12 +54,12 @@ public class User {
   public User() {
   }
 
-  public User(String username, String password, String firstname, String lastname, String phoneNumber, String email, String address, String addressNumb, String city, String country, String imageUrl, Role role) {
+  public User(String username, String password, String firstname, String lastname, String phone, String email, String address, String addressNumb, String city, String country, String imageUrl, Role role) {
     this.username = username;
     this.password = password;
     this.firstname = firstname;
     this.lastname = lastname;
-    this.phoneNumber = phoneNumber;
+    this.phone = phone;
     this.email = email;
     this.address = address;
     this.addressNumb = addressNumb;
@@ -109,12 +109,12 @@ public class User {
     this.lastname = lastname;
   }
 
-  public String getPhoneNumber() {
-    return phoneNumber;
+  public String getPhone() {
+    return phone;
   }
 
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public void setPhone(String phone) {
+    this.phone = phone;
   }
 
   public String getEmail() {
@@ -181,7 +181,7 @@ public class User {
             ", password='" + password + '\'' +
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
-            ", phoneNumber='" + phoneNumber + '\'' +
+            ", phone='" + phone + '\'' +
             ", email='" + email + '\'' +
             ", address='" + address + '\'' +
             ", addressNumb='" + addressNumb + '\'' +

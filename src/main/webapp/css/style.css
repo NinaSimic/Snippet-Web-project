@@ -1807,3 +1807,4 @@ li.selector {
   font-size: 0.8125em;
 }
 }
+.ace_editor { height: 600px;  width: 1140px; }

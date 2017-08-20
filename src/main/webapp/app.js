@@ -7,7 +7,8 @@
             'ngRoute',
             'ngCookies',
             'restangular',
-            'ui.router'
+            'ui.router',
+            'ui.ace'
         ])
         .config(function($routeProvider,$stateProvider,$urlRouterProvider, $httpProvider){
 
@@ -34,6 +35,21 @@
                             templateUrl: 'app/auth/register/register.html',
                             controller: 'RegisterController',
                             controllerAs: 'registerCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar.html',
+                            controller: 'NavbarController',
+                            controllerAs: 'navbarCtrl'
+                        }
+                    }
+                })
+                .state('addSnippet', {
+                    url: '/addSnippet',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/snippet/addSnippet.html',
+                            controller: 'AddSnippetController',
+                            controllerAs: 'addSnippetCtrl'
                         },
                         'navbar': {
                             templateUrl: 'app/navbar/navbar.html',
