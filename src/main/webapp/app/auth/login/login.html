@@ -1,0 +1,47 @@
+<div class="about_top">
+    <div class="container">
+        <div class="about">
+            <h1 class="blog_head" style="color: #F94B4B">Log in</h1>
+            <div class="contact" ng-submit="loginCtrl.login()">
+                <div class="col-md-4 contact_left">
+
+                </div>
+                <div class="col-md-8 contact_right">
+                    <form name="loginForm">
+                        <div class="text">
+                            <div class="text-fild">
+                                <span for="id">Email:</span>
+                                <input type="text" class="text"   ng-model="loginCtrl.username"   align = "Center"  value="Enter your password here"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email here';}">
+                            </div>
+                            </br>
+                            <div class="text-fild">
+                                <span for="pass">Password:</span>
+                                <input  id="pass" type="text" class="text" ng-model="loginCtrl.password"  value="Enter your password here" required  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your password here';}">
+                            </div>
+
+
+                            <div class="clearfix"> </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2 contact_left">
+
+                </div>
+                <div class="col-md-8 contact_right">
+                    <form>
+                        <div class="text">
+                            </br>
+                            <div class="clearfix"> </div>
+                        </div>
+
+                        <div align = "Center">
+                            <label class="btn1 btn-8 btn-8c"  ng-disabled="loginForm.$invalid" ><input type="submit" value="Log in"></label>
+                        </div>
+                        </br>
+                        <h5 align = "Center">You don't have account? <a href="#!/register" style="color: #F94B4B">Register </a>right now!</h5>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
