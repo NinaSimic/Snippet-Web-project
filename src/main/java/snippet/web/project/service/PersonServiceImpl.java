@@ -2,7 +2,7 @@ package snippet.web.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import snippet.web.project.model.Person;
+import snippet.web.project.model.User;
 import snippet.web.project.repositories.PersonRepository;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class PersonServiceImpl implements PersonService {
   private PersonRepository personRepository;
 
   @Override
-  public List<Person> loadAll() {
+  public List<User> loadAll() {
     return personRepository.findAll();
   }
 }
