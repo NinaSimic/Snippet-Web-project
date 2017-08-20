@@ -3,6 +3,7 @@ package snippet.web.project.model;
 import snippet.web.project.model.enumerations.Role;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
@@ -28,7 +29,7 @@ public class User {
   @Column(name = "PHONENUMBER", nullable = false)
   private String phoneNumber;
 
-    @Column(name = "EMAIL", nullable = false)
+  @Column(name = "EMAIL", nullable = false)
   private String email;
 
   @Column(name = "ADDRESS", nullable = false)

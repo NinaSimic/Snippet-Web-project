@@ -20,24 +20,29 @@ public class Comment {
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @Column(name = "user", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "user", nullable = false)
     private User user;
-
-    @OneToMany(cascade = CascadeType.REMOVE)
-    private Grade grade;
 
     @OneToMany(cascade = CascadeType.REMOVE)
     private List<Grade> grades;
 
+    @Column(name = "number_positive", nullable = false)
+    private int number_positive;
+
+    @Column(name = "number_negative", nullable = false)
+    private int number_negative;
+
     public Comment() {
     }
 
-    public Comment(String description, Date date, User user, Grade grade, List<Grade> grades) {
+    public Comment(String description, Date date, User user, List<Grade> grades, int number_positive, int number_negative) {
         this.description = description;
         this.date = date;
         this.user = user;
-        this.grade = grade;
         this.grades = grades;
+        this.number_positive = number_positive;
+        this.number_negative = number_negative;
     }
 
     public long getId() {
@@ -72,20 +77,28 @@ public class Comment {
         this.user = user;
     }
 
-    public Grade getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Grade grade) {
-        this.grade = grade;
-    }
-
     public List<Grade> getGrades() {
         return grades;
     }
 
     public void setGrades(List<Grade> grades) {
         this.grades = grades;
+    }
+
+    public int getNumber_positive() {
+        return number_positive;
+    }
+
+    public void setNumber_positive(int number_positive) {
+        this.number_positive = number_positive;
+    }
+
+    public int getNumber_negative() {
+        return number_negative;
+    }
+
+    public void setNumber_negative(int number_negative) {
+        this.number_negative = number_negative;
     }
 
     @Override
@@ -95,8 +108,9 @@ public class Comment {
                 ", description='" + description + '\'' +
                 ", date=" + date +
                 ", user=" + user +
-                ", grade=" + grade +
                 ", grades=" + grades +
+                ", number_positive=" + number_positive +
+                ", number_negative=" + number_negative +
                 '}';
     }
 }

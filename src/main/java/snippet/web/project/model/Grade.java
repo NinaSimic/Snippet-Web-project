@@ -12,11 +12,8 @@ public class Grade {
     @Column(name = "ID")
     private long id;
 
-    @Column(name = "number_positive", nullable = false)
-    private int number_positive;
-
-    @Column(name = "number_negative", nullable = false)
-    private int number_negative;
+    @Column(name = "positive", nullable = false)
+    private boolean positive;
 
     @ManyToOne
     @JoinColumn(name = "user", nullable = false)
@@ -29,9 +26,8 @@ public class Grade {
     public Grade() {
     }
 
-    public Grade(int number_positive, int number_negative, User user, Comment comment) {
-        this.number_positive = number_positive;
-        this.number_negative = number_negative;
+    public Grade(boolean positive, User user, Comment comment) {
+        this.positive = positive;
         this.user = user;
         this.comment = comment;
     }
@@ -44,20 +40,12 @@ public class Grade {
         this.id = id;
     }
 
-    public int getNumber_positive() {
-        return number_positive;
+    public boolean isPositive() {
+        return positive;
     }
 
-    public void setNumber_positive(int number_positive) {
-        this.number_positive = number_positive;
-    }
-
-    public int getNumber_negative() {
-        return number_negative;
-    }
-
-    public void setNumber_negative(int number_negative) {
-        this.number_negative = number_negative;
+    public void setPositive(boolean positive) {
+        this.positive = positive;
     }
 
     public User getUser() {
@@ -80,8 +68,7 @@ public class Grade {
     public String toString() {
         return "Grade{" +
                 "id=" + id +
-                ", number_positive=" + number_positive +
-                ", number_negative=" + number_negative +
+                ", positive=" + positive +
                 ", user=" + user +
                 ", comment=" + comment +
                 '}';
