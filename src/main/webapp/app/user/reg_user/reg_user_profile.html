@@ -1,0 +1,132 @@
+<div class="about_top">
+    <div class="container">
+        <div class="about">
+            <h1 class="blog_head" style="color: #F94B4B">Your data:</h1>
+
+
+            <div class="contact">
+
+
+                <div class="col-md-2 contact_left">
+
+                </div>
+                <div class="col-md-8 contact_right">
+                    <form ng-submit="regUserCtrl.change()">
+                        <center>
+                            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+                            <div class="clearfix"> </div>
+                            <div class="text">
+                                <div class="text-fild">
+                                    <span for="firstname">Name:</span>
+                                    <input type="text" class="text" id="firstname" ng-model="ownerCtrl.userData.firstname" value="Enter name here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter name here';}">
+                                </div>
+                                <div class="text-fild">
+                                    <span for="lastname">Surname:</span>
+                                    <input type="text" class="text" id="lastname" ng-model="ownerCtrl.userData.lastname" value="Enter surname here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter surname here';}">
+                                </div>
+                            </div>
+                            <div class="text">
+                                <div class="text-fild">
+                                    <span for="phone">Phone number:</span>
+                                    <input type="text" class="text" id="phone" ng-model="ownerCtrl.userData.phone" value="Enter email here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter username here';}">
+                                </div>
+                                <div class="text-fild">
+                                    <span for="email">Email:</span>
+                                    <input type="text" class="text" id="email" ng-model="ownerCtrl.userData.email" value="Enter password here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter email here';}">
+                                </div>
+                            </div>
+                            <div class="text">
+                                <div class="text-fild">
+                                    <span for="address">Address:</span>
+                                    <input type="text" class="text" id="address" ng-model="ownerCtrl.userData.address"  value="Enter address here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter address here';}">
+                                </div>
+                                <div class="text-fild">
+                                    <span for="anumber">Andress number:</span>
+                                    <input type="text" class="text" id="anumber" ng-model="ownerCtrl.userData.anumber" value="Enter city here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter city here';}">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-fild">
+                                    <span for="city">City:</span>
+                                    <input type="text" class="text" id="city" ng-model="ownerCtrl.userData.city" value="Enter city here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter city here';}">
+                                </div>
+                                <div class="text-fild">
+                                    <span for="country">Country:</span>
+                                    <input type="text" class="text" id="country" ng-model="ownerCtrl.userData.country" value="Enter bank account number here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter bank account number here';}">
+                                </div>
+                            </div>
+
+                            <div class="clearfix"> </div>
+
+                            <div align = "Center">
+                                <label class="btn1 btn-8 btn-8c"><input type="submit"  value="Edit"></label>
+                            </div>
+                    </form>
+
+                    </br>
+                    </br>
+
+                    <h1 class="blog_head" style="color: #F94B4B">Your snippets:</h1>
+                    <div class="tab-1">
+
+                        <div class="tab-1">
+                            <div  ng-repeat="o in regUserCtrl.allMySnippets">
+
+                                <ul class="tab_img tab_1" >
+                                    <li>
+                                        <div class="client_box1">
+                                            <img ng-src="{{o.realEstate.imageUrl}}" class="img-responsive" alt="images/pic4.jpg"/>
+                                            <h3 class="m_1">{{o.state}}</h3>
+                                            <div class="boxed_mini_details clearfix">
+                                                <span class="bedrooms last">
+                                                    <strong>Title</strong>
+                                                    <a href="single.html">{{o.title}}</a>
+                                                </span>
+                                                <span class="area first"><strong>Price</strong><i></i>
+                                                   {{o.price}}</span>
+                                                <span class="bedrooms last"><strong>Contact</strong>
+                                                    {{o.phoneNumber}}</span>
+                                            </div>
+                                            <div align = "Center">
+                                                <form ng-submit="getAllRealEstatesCtrl.redirect2(o.id)" >
+                                                    <label class="btn4 btn-82 btn-82c"><input type="submit" value="Edit"></label>
+                                                </form>
+                                                <form ng-submit="ownerCtrl.eraseAdvertisement(o.id)">
+                                                    <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Delete"></label>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <div class="clearfix"></div>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="clearfix"> </div>
+</div>
+
+
+
+
+
+<div class="clearfix"> </div>
+</br>
+
+</div>
+</div>

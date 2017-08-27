@@ -1,12 +1,9 @@
-/**
- * Created by Sandra on 7/13/2017.
- */
+
 (function () {
     angular.module("snippetApp")
         .controller('NavbarController', navbarController);
 
-    //login page controller
-    function navbarController($scope,$location,$window,LoginFactory) {
+    function navbarController($scope,$window,LoginFactory) {
 
         var vm = this;
 
@@ -24,6 +21,11 @@
             else{
                 vm.loggedIn = false;
             }
+        }
+
+        $scope.redirect = function(){
+            $window.location.href = "http://" + $window.location.host + "/#/login";
+
         }
 
 
@@ -45,10 +47,10 @@
             console.log("usao u logout");
             $window.localStorage.removeItem("loggedUser");
             $window.localStorage.removeItem("token");
-
-            $location.path('/');
+            checkIfLogged();
+            $scope.redirect();
+            //$location.path('/');
         }
         ;
-
     }
 })();

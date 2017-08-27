@@ -3,7 +3,6 @@ package snippet.web.project.model;
 import snippet.web.project.model.enumerations.Role;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -35,8 +34,8 @@ public class User {
   @Column(name = "address", nullable = false)
   private String address;
 
-  @Column(name = "addressNumb", nullable = false)
-  private String addressNumb;
+  @Column(name = "anumber", nullable = false)
+  private String anumber;
 
   @Column(name = "city", nullable = false)
   private String city;
@@ -44,17 +43,20 @@ public class User {
   @Column(name = "country", nullable = false)
   private String country;
 
-  @Column(name = "imageUrl", nullable = false)
-  private String imageUrl;
+  @Column(name = "image")
+  private String image;
 
   @com.sun.istack.internal.NotNull
   @Enumerated(EnumType.STRING)
   private Role role;
 
+  @ManyToOne
+  private Authority authority;
+
   public User() {
   }
 
-  public User(String username, String password, String firstname, String lastname, String phone, String email, String address, String addressNumb, String city, String country, String imageUrl, Role role) {
+  public User(String username, String password, String firstname, String lastname, String phone, String email, String address, String anumber, String city, String country, String image, Role role, Authority authority) {
     this.username = username;
     this.password = password;
     this.firstname = firstname;
@@ -62,11 +64,12 @@ public class User {
     this.phone = phone;
     this.email = email;
     this.address = address;
-    this.addressNumb = addressNumb;
+    this.anumber = anumber;
     this.city = city;
     this.country = country;
-    this.imageUrl = imageUrl;
+    this.image = image;
     this.role = role;
+    this.authority = authority;
   }
 
   public Long getId() {
@@ -133,12 +136,12 @@ public class User {
     this.address = address;
   }
 
-  public String getAddressNumb() {
-    return addressNumb;
+  public String getAnumber() {
+    return anumber;
   }
 
-  public void setAddressNumb(String addressNumb) {
-    this.addressNumb = addressNumb;
+  public void setAnumber(String anumber) {
+    this.anumber = anumber;
   }
 
   public String getCity() {
@@ -157,12 +160,12 @@ public class User {
     this.country = country;
   }
 
-  public String getImageUrl() {
-    return imageUrl;
+  public String getImage() {
+    return image;
   }
 
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
+  public void setImage(String image) {
+    this.image = image;
   }
 
   public Role getRole() {
@@ -171,6 +174,14 @@ public class User {
 
   public void setRole(Role role) {
     this.role = role;
+  }
+
+  public Authority getAuthority() {
+    return authority;
+  }
+
+  public void setAuthority(Authority authority) {
+    this.authority = authority;
   }
 
   @Override
@@ -184,11 +195,12 @@ public class User {
             ", phone='" + phone + '\'' +
             ", email='" + email + '\'' +
             ", address='" + address + '\'' +
-            ", addressNumb='" + addressNumb + '\'' +
+            ", anumber='" + anumber + '\'' +
             ", city='" + city + '\'' +
             ", country='" + country + '\'' +
-            ", imageUrl='" + imageUrl + '\'' +
+            ", image='" + image + '\'' +
             ", role=" + role +
+            ", authority=" + authority +
             '}';
   }
 }

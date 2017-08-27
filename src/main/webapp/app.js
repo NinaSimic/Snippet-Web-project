@@ -8,7 +8,8 @@
             'ngCookies',
             'restangular',
             'ui.router',
-            'ui.ace'
+            'ui.ace',
+            'ngFileUpload'
         ])
         .config(function($routeProvider,$stateProvider,$urlRouterProvider, $httpProvider){
 
@@ -73,6 +74,51 @@
                         }
                     }
                 })
+                .state('profile', {
+                    url: '/profile',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/user/reg_user/reg_user_profile.html',
+                            controller: 'RegUserController',
+                            controllerAs: 'regUserCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar.html',
+                            controller: 'NavbarController',
+                            controllerAs: 'navbarCtrl'
+                        }
+                    }
+                })
+                .state('user_modify', {
+                    url: '/user_modify',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/user/reg_user/reg_user_modify.html',
+                            controller: 'RegUserController',
+                            controllerAs: 'regUserCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar.html',
+                            controller: 'NavbarController',
+                            controllerAs: 'navbarCtrl'
+                        }
+                    }
+                })
+                .state('upload_image', {
+                    url: '/upload_image',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/auth/register/upload_image.html',
+                            controller: 'UploadImageController',
+                            controllerAs: 'uploadImageCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar.html',
+                            controller: 'NavbarController',
+                            controllerAs: 'navbarCtrl'
+                        }
+                    }
+                })
                 .state('contact', {
                     url: '/contact',
                     views: {
@@ -101,21 +147,7 @@
                     }
                 })
 
-            /*          .state('profile', {
-                          url: '/profile',
-                          views: {
-                              'content': {
-                                  templateUrl: 'app/user/owner/owner_profile.html',
-                                  controller: 'OwnerController',
-                                  controllerAs: 'ownerCtrl'
-                              },
-                              'navbar': {
-                                  templateUrl: 'app/navbar/navbar.html',
-                                  controller: 'NavbarController',
-                                  controllerAs: 'navbarCtrl'
-                              }
-                          }
-                      })
+            /*
                       .state('ownerModify', {
                           url: '/owner_modify',
                           views: {
@@ -424,7 +456,7 @@
                           url: '/authenticate/{id:int}',
                           templateUrl: 'page/authentication.html',
                           controller: 'verificationController'
-                      });
+                      });*/
 
 
 
@@ -449,7 +481,7 @@
                               }
                           };
                       }
-                  ]);*/
+                  ]);
 
     })
 

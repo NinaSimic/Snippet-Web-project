@@ -1,14 +1,13 @@
-package kts.project.security;
+package snippet.web.project.security;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-
-import kts.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
+import snippet.web.project.service.UserService;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
