@@ -9,33 +9,39 @@
             </div>
             <div class="col-xs-8 header_right">
                 <span class="menu"></span>
-                <div class="top-menu" ng-show="navbarCtrl.loggedIn">
+                <div class="top-menu2" ng-show="navbarCtrl.loggedIn">
                     <ul>
-                        <li><a href="#!/profile"><i class="fa fa-info"> </i> Profile</a></li>
-                        <li><a href="#!/listings"><i class="fa fa-home"> </i>Listings</a></li>
-                        <li><a href="#!/get_all_real_estates"><i class="fa fa-dollar"> </i>Rent/Sell</a></li>
-
-                        <li><a href="#!/about"><i class="fa fa-info"> </i> About</a></li>
-                        <li><a href="#!/contact"><i class="fa fa-envelope-o"> </i>Contact</a></li>
-
+                        <li><a href="#!/profile"><i class="fa fa-info"> </i>Profile</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"><i class="fa fa-plus"> </i>Snippet<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#!/addSnippet">Add new</a></li>
+                                <li><a href="#">Search</a></li>
+                            </ul>
+                        </li>
                         <li  ng-click="navbarCtrl.logout()"><a href="#"><i class="fa fa-sign-in"> </i>Sign out</a></li>
 
                         <div class="clearfix"></div>
                     </ul>
                 </div>
 
-
-                <div class="top-menu" ng-show="!navbarCtrl.loggedIn">
+                <div class="top-menu2" ng-show="!navbarCtrl.loggedIn" style="alignment: right">
 
                     <ul>
-                        <li><a href="#!/addSnippet"><i class="fa fa-plus"> </i>Create snippet</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"><i class="fa fa-plus"> </i>Snippet<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#!/addSnippet">Add new</a></li>
+                                <li><a href="#">Search</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#!/about"><i class="fa fa-info"> </i> About</a></li>
-                        <li><a href="#!/contact"><i class="fa fa-envelope-o"> </i>Contact</a></li>
                         <li  ><a href="#!/login"><i class="fa fa-sign-out"> </i>Sign in</a></li>
 
                         <div class="clearfix"></div>
                     </ul>
                 </div>
+
 
                 <!-- script for menu -->
                 <script>

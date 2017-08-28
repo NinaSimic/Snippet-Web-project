@@ -11,48 +11,38 @@
 
                 </div>
                 <div class="col-md-8 contact_right">
-                    <form ng-submit="regUserCtrl.modify()">
+                    <form ng-submit="adminCtrl.modify()">
                         <center>
                             <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
                             <div class="clearfix"> </div>
                             <div class="text">
                                 <div class="text-fild">
-                                    <span for="firstname">Name:</span>
-                                    <input type="text" class="text" id="firstname" ng-model="regUserCtrl.userData.firstname" required >
-                                </div>
-                                <div class="text-fild">
-                                    <span for="lastname">Surname:</span>
-                                    <input type="text" class="text" id="lastname" ng-model="regUserCtrl.userData.lastname" required >
-                                </div>
-                            </div>
-                            <div class="text">
-                                <div class="text-fild">
                                     <span for="phone">Phone number:</span>
-                                    <input type="text" class="text" id="phone" ng-model="regUserCtrl.userData.phone" required>
+                                    <input type="text" class="text" id="phone" ng-model="adminCtrl.userData.phone" required>
                                 </div>
                                 <div class="text-fild">
                                     <span for="email">Email:</span>
-                                    <input type="text" class="text" id="email" ng-model="regUserCtrl.userData.email" required>
+                                    <input type="text" class="text" id="email" ng-model="adminCtrl.userData.email" required>
                                 </div>
                             </div>
                             <div class="text">
                                 <div class="text-fild">
                                     <span for="address">Address:</span>
-                                    <input type="text" class="text" id="address" ng-model="regUserCtrl.userData.address" required >
+                                    <input type="text" class="text" id="address" ng-model="adminCtrl.userData.address" required >
                                 </div>
                                 <div class="text-fild">
                                     <span for="anumber">Andress number:</span>
-                                    <input type="text" class="text" id="anumber" ng-model="regUserCtrl.userData.anumber" required>
+                                    <input type="text" class="text" id="anumber" ng-model="adminCtrl.userData.anumber" required>
                                 </div>
                             </div>
                             <div>
                                 <div class="text-fild">
                                     <span for="city">City:</span>
-                                    <input type="text" class="text" id="city" ng-model="regUserCtrl.userData.city" required>
+                                    <input type="text" class="text" id="city" ng-model="adminCtrl.userData.city" required>
                                 </div>
                                 <div class="text-fild">
                                     <span for="country">Country:</span>
-                                    <input type="text" class="text" id="country" ng-model="regUserCtrl.userData.country" required>
+                                    <input type="text" class="text" id="country" ng-model="adminCtrl.userData.country" required>
                                 </div>
                             </div>
 

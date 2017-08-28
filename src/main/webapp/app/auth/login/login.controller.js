@@ -35,7 +35,7 @@
                         console.log("pre switcha" , $window.localStorage.getItem("role"));
                         switch ($window.localStorage.getItem("role")){
                             case "ADMIN" :
-                                $window.location = "#!/predsednik"; break;
+                                $window.location = "#!/profile_admin"; break;
                             case "USER" :
                                 $window.location = "#!/profile"; break;
                         }

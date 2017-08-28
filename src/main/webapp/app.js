@@ -104,6 +104,36 @@
                         }
                     }
                 })
+                .state('profile_admin', {
+                    url: '/profile_admin',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/user/admin/admin_profile.html',
+                            controller: 'AdminController',
+                            controllerAs: 'adminCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar_admin.html',
+                            controller: 'NavbarAdminController',
+                            controllerAs: 'navbarAdminCtrl'
+                        }
+                    }
+                })
+                .state('admin_modify', {
+                    url: '/admin_modify',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/user/admin/admin_modify.html',
+                            controller: 'AdminController',
+                            controllerAs: 'adminCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar_admin.html',
+                            controller: 'NavbarAdminController',
+                            controllerAs: 'navbarAdminCtrl'
+                        }
+                    }
+                })
                 .state('upload_image', {
                     url: '/upload_image',
                     views: {

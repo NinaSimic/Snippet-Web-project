@@ -1,14 +1,14 @@
 
 (function() {
-    angular.module("snippetApp").controller("RegUserController", regUserController);
+    angular.module("snippetApp").controller("AdminController", adminController);
 
-    function regUserController($http, $window, $scope, LoginFactory) {
+    function adminController($http, $window, $scope, LoginFactory) {
         var vm = this;
         vm.userData = angular.fromJson($window.localStorage['loggedUser']);
         console.log("vm.userData = " + JSON.stringify(vm.userData));
 
         $scope.redirect = function(){
-            $window.location.href = "http://" + $window.location.host + "/#!/user_modify";
+            $window.location.href = "http://" + $window.location.host + "/#!/admin_modify";
 
         }
 
@@ -32,7 +32,7 @@
 
             }
 
-            $http.post('/api/users/reg_user/modify', vm.changed_user).then(function (response) {
+            $http.post('/api/users/admin/modify', vm.changed_user).then(function (response) {
 
                 //dovlace se podaci ulogovanog iz baze
                 var promise = LoginFactory.getLoggedUserData(vm.token);
@@ -41,7 +41,7 @@
                         console.log("ucitan u funkciji: " + JSON.stringify(loggedUser));
                         $window.localStorage['loggedUser'] = angular.toJson(loggedUser);
                         $scope.userData = loggedUser;
-                        $window.location.href = "#!/profile";
+                        $window.location.href = "#!/profile_admin";
                     }
                 );
 
