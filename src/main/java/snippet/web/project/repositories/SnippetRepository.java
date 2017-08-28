@@ -5,5 +5,6 @@ import snippet.web.project.model.Snippet;
 
 public interface SnippetRepository  extends JpaRepository<Snippet, Long> {
 
+    Snippet findById(Long id);
 
 }

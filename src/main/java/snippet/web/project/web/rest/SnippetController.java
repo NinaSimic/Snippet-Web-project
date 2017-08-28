@@ -6,8 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import snippet.web.project.model.Language;
 import snippet.web.project.model.Snippet;
+import snippet.web.project.model.User;
+import snippet.web.project.model.enumerations.Role;
+import snippet.web.project.model.enumerations.SnippetState;
 import snippet.web.project.service.SnippetService;
 import snippet.web.project.service.UserService;
+import snippet.web.project.util.ResponseMessage;
 import snippet.web.project.web.rest.dto.CreateSnippetDTO;
 
 
@@ -35,11 +39,33 @@ public class SnippetController {
         // IZMENITI!!!! Pitati sta predstavlja taj url
         snippet.setUrl_reporsitory("" + createSnippetDTO.getId());
         snippet.setEnd_date(createSnippetDTO.getEnd_date());
+        snippet.setState(SnippetState.APROVED);
 
-        snippet.setUser(userService.findByUsername("admin"));
+        snippet.setUser(userService.findByUsername("ver"));
 
         snippetService.save(snippet);
 
         return new ResponseEntity<>(snippet, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public ResponseEntity delete(@PathVariable Long id, @RequestHeader("X-Auth-Token") String token)
+    {
+
+        User user = userService.findByToken(token);
+      /*  if(user.getRole() != Role.USER || user.getRole() != Role.ADMIN){
+            return new ResponseEntity<>(new ResponseMessage("You are not allowed to delete snippet!"), HttpStatus.BAD_REQUEST);
+        }*/
+        Snippet s = snippetService.findById(id);
+        if (s.getUser().getId() == user.getId()){
+
+         //   verifierReportService.deleteReportsOfAdvertisement(a);
+            snippetService.delete(s);
+
+            //treba obrisati i sve one iste!!!!
+            return new ResponseEntity<>(s, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new ResponseMessage("You are not allowed to delete advertisement!"), HttpStatus.BAD_REQUEST);
+
     }
 }

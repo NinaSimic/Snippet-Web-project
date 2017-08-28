@@ -1,5 +1,7 @@
 package snippet.web.project.model;
 
+import snippet.web.project.model.enumerations.SnippetState;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -37,10 +39,14 @@ public class Snippet {
     @JoinColumn(name = "user", nullable = false)
     private User user;
 
+    @com.sun.istack.internal.NotNull
+    @Enumerated(EnumType.STRING)
+    private SnippetState state;
+
     public Snippet() {
     }
 
-    public Snippet(String description, String clip, Language language, String url_reporsitory, Date end_date, List<Comment> comments, User user) {
+    public Snippet(String description, String clip, Language language, String url_reporsitory, Date end_date, List<Comment> comments, User user, SnippetState state) {
         this.description = description;
         this.clip = clip;
         this.language = language;
@@ -48,6 +54,7 @@ public class Snippet {
         this.end_date = end_date;
         this.comments = comments;
         this.user = user;
+        this.state = state;
     }
 
     public long getId() {
@@ -114,6 +121,14 @@ public class Snippet {
         this.user = user;
     }
 
+    public SnippetState getState() {
+        return state;
+    }
+
+    public void setState(SnippetState state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Snippet{" +
@@ -125,6 +140,7 @@ public class Snippet {
                 ", end_date=" + end_date +
                 ", comments=" + comments +
                 ", user=" + user +
+                ", state=" + state +
                 '}';
     }
 }

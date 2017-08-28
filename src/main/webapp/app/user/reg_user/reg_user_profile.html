@@ -70,28 +70,28 @@
                     <div class="tab-1">
 
                         <div class="tab-1">
-                            <div  ng-repeat="o in regUserCtrl.allMySnippets">
+                            <div  ng-repeat="s in regUserCtrl.allMySnippets">
 
                                 <ul class="tab_img tab_1" >
                                     <li>
-                                        <div class="client_box1">
-                                            <img ng-src="{{o.realEstate.imageUrl}}" class="img-responsive" alt="images/pic4.jpg"/>
-                                            <h3 class="m_1">{{o.state}}</h3>
-                                            <div class="boxed_mini_details clearfix">
-                                                <span class="bedrooms last">
-                                                    <strong>Title</strong>
-                                                    <a href="single.html">{{o.title}}</a>
-                                                </span>
-                                                <span class="area first"><strong>Price</strong><i></i>
-                                                   {{o.price}}</span>
-                                                <span class="bedrooms last"><strong>Contact</strong>
-                                                    {{o.phoneNumber}}</span>
-                                            </div>
+
+
+                                        <span class="bedrooms last">
+                                            <strong>Description</strong>
+                                            <a href="single.html">{{s.description}}</a>
+                                        </span>
+                                        <span class="area first"><strong>Programe language</strong><i></i>
+                                            {{s.language.name}}</span>
+                                        <span class="bedrooms last"><strong>Exparation date</strong>
+                                            {{s.end_date | date : 'dd.MM.yyyy'}}</span>
+
+                                        <h4 class="m_1">{{s.state}}</h4>
+
                                             <div align = "Center">
                                                 <form ng-submit="getAllRealEstatesCtrl.redirect2(o.id)" >
                                                     <label class="btn4 btn-82 btn-82c"><input type="submit" value="Edit"></label>
                                                 </form>
-                                                <form ng-submit="ownerCtrl.eraseAdvertisement(o.id)">
+                                                <form ng-submit="regUserCtrl.deleteSnippet(s.id)">
                                                     <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Delete"></label>
                                                 </form>
                                             </div>
