@@ -4,11 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import snippet.web.project.model.Snippet;
 import snippet.web.project.model.User;
 import snippet.web.project.model.enumerations.Role;
 import snippet.web.project.service.AuthorityService;
+import snippet.web.project.service.SnippetService;
 import snippet.web.project.service.UserService;
+import snippet.web.project.util.ResponseMessage;
 import snippet.web.project.web.rest.dto.RegisterDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users/admin")
@@ -19,6 +25,9 @@ public class AdminController {
 
     @Autowired
     private AuthorityService authorityService;
+
+    @Autowired
+    private SnippetService snippetService;
 
     //registracija administratora i verifikatora!
     @RequestMapping(value = "/modify", method = RequestMethod.POST, consumes = "application/json")
@@ -45,4 +54,26 @@ public class AdminController {
         userService.save(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/getAllMySnippets", method = RequestMethod.GET)
+    public ResponseEntity getAllMyAdvertisements(@RequestHeader("X-Auth-Token") String token) {
+
+
+
+
+            User user = userService.findByToken(token);
+            if (user.getRole() == Role.ADMIN){
+
+                List<Snippet> mySnippets = new ArrayList<>();
+
+                for (Snippet s : snippetService.findAll()) {
+                    if (s.getUser().getId() == user.getId()){
+                        mySnippets.add(s);
+                    }
+                }
+                return new ResponseEntity<>(mySnippets, HttpStatus.OK);
+            }
+
+            return new ResponseEntity<>(new ResponseMessage("Loged user is not registrated user!"), HttpStatus.BAD_REQUEST);
+        }
 }

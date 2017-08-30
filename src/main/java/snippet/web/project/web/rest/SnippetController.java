@@ -14,6 +14,9 @@ import snippet.web.project.service.UserService;
 import snippet.web.project.util.ResponseMessage;
 import snippet.web.project.web.rest.dto.CreateSnippetDTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/snippet")
@@ -37,11 +40,11 @@ public class SnippetController {
         snippet.setClip(createSnippetDTO.getClip());
         snippet.setLanguage(l);
         // IZMENITI!!!! Pitati sta predstavlja taj url
-        snippet.setUrl_reporsitory("" + createSnippetDTO.getId());
+        snippet.setUrl_reporsitory(createSnippetDTO.getUrl());
         snippet.setEnd_date(createSnippetDTO.getEnd_date());
         snippet.setState(SnippetState.APROVED);
 
-        snippet.setUser(userService.findByUsername("ver"));
+        snippet.setUser(userService.findByUsername("admin"));
 
         snippetService.save(snippet);
 

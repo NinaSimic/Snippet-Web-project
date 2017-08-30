@@ -56,7 +56,16 @@
                 </div>
 
 
+
+
+
+
                 <div class="text-fild">
+                    <div class="text-fild" style="width: 370px;">
+                        <span for="username">URL:</span>
+                        <input type="text" class="text" id="url" ng-model="addSnippetCtrl.newSnippet.url" required value="Enter url here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter username here';}">
+                    </div>
+                    <div class="clearfix"> </div>
                     <span for="end_date">Enter exparation date:</span>
                     </br>
                     <input type="date" class="text" id="end_date" ng-model="addSnippetCtrl.newSnippet.end_date" required value="Enter date of birth here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter date of birth here';}">

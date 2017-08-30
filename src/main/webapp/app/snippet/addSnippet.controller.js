@@ -15,6 +15,8 @@
 
         $scope.modes = [];
         $scope.mode = [];
+        vm.userData = angular.fromJson($window.localStorage['loggedUser']);
+
 
 
         $scope.aceLoaded = function(_editor) {
@@ -52,10 +54,19 @@
 
         });
 
-     /*   $scope.redirect = function(){
-            $window.location.href = "http://" + $window.location.host + "/#!/login";
+        $scope.redirect = function(){
+            if(vm.userData.role == "ADMIN") {
+                $window.location.href = "http://" + $window.location.host + "/#!/profile_admin";
+            }
+            if(vm.userData.role == "USER"){
+                $window.location.href = "http://" + $window.location.host + "/#!/profile";
 
-        }*/
+            }
+            else{
+                $window.location.href = "http://" + $window.location.host + "/#!/home";
+            }
+
+        }
 
 
         function createSnippet () {
@@ -64,6 +75,7 @@
                 description : vm.newSnippet.description,
                 clip : vm.ace.getValue(),
                 language: vm.newSnippet.language,
+                url: vm.newSnippet.url,
                 end_date : vm.newSnippet.end_date
             }
 
@@ -73,7 +85,7 @@
 
             $http.post('/api/snippet/create', vm.new_snippet).then(function (response) {
 
-              //  $scope.redirect();
+                $scope.redirect();
 
             },function(response){
                 alert("Create new snippet failed");

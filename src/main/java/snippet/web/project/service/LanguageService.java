@@ -16,4 +16,8 @@ public class LanguageService {
     public Language findByName(String name){return languageRepository.findByName(name);}
 
     public List<Language> findAll() {return languageRepository.findAll();}
+
+    public Language save(Language l){
+        return languageRepository.save(l);
+    }
 }

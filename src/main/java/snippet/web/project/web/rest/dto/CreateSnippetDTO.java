@@ -15,15 +15,18 @@ public class CreateSnippetDTO {
 
     private Date end_date;
 
+    private String url;
+
     public CreateSnippetDTO() {
     }
 
-    public CreateSnippetDTO(long id, String description, String clip, long language, Date end_date) {
+    public CreateSnippetDTO(long id, String description, String clip, long language, Date end_date, String url) {
         this.id = id;
         this.description = description;
         this.clip = clip;
         this.language = language;
         this.end_date = end_date;
+        this.url = url;
     }
 
     public long getId() {
@@ -64,5 +67,13 @@ public class CreateSnippetDTO {
 
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

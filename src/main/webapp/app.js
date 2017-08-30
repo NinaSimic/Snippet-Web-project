@@ -134,6 +134,36 @@
                         }
                     }
                 })
+                .state('add_prog_language', {
+                    url: '/add_prog_language',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/language/add_prog_language.html',
+                            controller: 'ProgLanguageController',
+                            controllerAs: 'progLanguageCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar_admin.html',
+                            controller: 'NavbarAdminController',
+                            controllerAs: 'navbarAdminCtrl'
+                        }
+                    }
+                })
+                .state('block_user', {
+                    url: '/block_user',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/users/admin/block_user.html',
+                            controller: 'BlockUserController',
+                            controllerAs: 'blockUserCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar_admin.html',
+                            controller: 'NavbarAdminController',
+                            controllerAs: 'navbarAdminCtrl'
+                        }
+                    }
+                })
                 .state('upload_image', {
                     url: '/upload_image',
                     views: {

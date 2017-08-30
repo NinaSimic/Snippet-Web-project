@@ -56,7 +56,7 @@ public class RegUserController {
     }
 
     @RequestMapping(value = "/getAllMySnippets", method = RequestMethod.GET)
-    public ResponseEntity getAllMyAdvertisements(@RequestHeader("X-Auth-Token") String token) {
+    public ResponseEntity getAllMySnippets(@RequestHeader("X-Auth-Token") String token) {
 
         User user = userService.findByToken(token);
         if (user.getRole() == Role.USER){

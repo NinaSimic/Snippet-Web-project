@@ -5,7 +5,7 @@
 
     'use strict';
 
-    var BASE_URL = '/api/languages';
+    var BASE_URL = '/api/language';
 
     angular
         .module('snippetApp')

@@ -4,8 +4,24 @@
 
     function adminController($http, $window, $scope, LoginFactory) {
         var vm = this;
+        vm.getAllMySnippets = getAllMySnippets;
+        vm.deleteSnippet = deleteSnippet;
+
+        getAllMySnippets();
+
         vm.userData = angular.fromJson($window.localStorage['loggedUser']);
         console.log("vm.userData = " + JSON.stringify(vm.userData));
+
+        function getAllMySnippets() {
+
+            $http.get('/api/users/admin/getAllMySnippets')
+                .then(function(response) {
+                    console.log("All my snippets: " + JSON.stringify(response.data));
+                    vm.allMySnippets = response.data;
+                }, function(response) {
+                    alert(JSON.stringify(response.data));
+                });
+        }
 
         $scope.redirect = function(){
             $window.location.href = "http://" + $window.location.host + "/#!/admin_modify";
@@ -51,6 +67,20 @@
             });
 
 
+        }
+
+        function deleteSnippet(id){
+            if (confirm("Are you sure you want to erase this snippet: " + id + "?") == true) {
+
+                $http.get('/api/snippet/delete/'+ id)
+                    .then(function(response) {
+
+
+                        getAllMySnippets();
+                    }, function(response) {
+                        alert(JSON.stringify(response.data));
+                    });
+            }
         }
 
 
