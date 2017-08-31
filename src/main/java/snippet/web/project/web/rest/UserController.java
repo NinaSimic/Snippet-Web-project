@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import snippet.web.project.model.User;
 import snippet.web.project.model.enumerations.Role;
+import snippet.web.project.model.enumerations.UserStatus;
 import snippet.web.project.security.TokenUtils;
 import snippet.web.project.service.AuthorityService;
 import snippet.web.project.service.UserService;
@@ -146,6 +147,7 @@ public class UserController {
         user.setImage(null);
         user.setRole(role);
         user.setAuthority(authorityService.findByName("ROLE_USER"));
+        user.setStatus(UserStatus.APPROVED);
 
 
         userService.register(user);

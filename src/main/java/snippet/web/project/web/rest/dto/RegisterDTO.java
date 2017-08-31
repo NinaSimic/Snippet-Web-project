@@ -26,10 +26,12 @@ public class RegisterDTO {
 
     private String role;
 
+    private String userStatus;
+
     public RegisterDTO() {
     }
 
-    public RegisterDTO(Long id, String username, String password, String firstname, String lastname, String phone, String email, String address, String anumber, String city, String country, String role) {
+    public RegisterDTO(Long id, String username, String password, String firstname, String lastname, String phone, String email, String address, String anumber, String city, String country, String role, String userStatus) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -42,6 +44,7 @@ public class RegisterDTO {
         this.city = city;
         this.country = country;
         this.role = role;
+        this.userStatus = userStatus;
     }
 
     public Long getId() {
@@ -138,5 +141,13 @@ public class RegisterDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
 }

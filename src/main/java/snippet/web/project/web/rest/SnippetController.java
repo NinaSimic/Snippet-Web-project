@@ -1,5 +1,6 @@
 package snippet.web.project.web.rest;
 
+import org.codehaus.groovy.runtime.powerassert.SourceText;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import snippet.web.project.model.Snippet;
 import snippet.web.project.model.User;
 import snippet.web.project.model.enumerations.Role;
 import snippet.web.project.model.enumerations.SnippetState;
+import snippet.web.project.model.enumerations.UserStatus;
 import snippet.web.project.service.SnippetService;
 import snippet.web.project.service.UserService;
 import snippet.web.project.util.ResponseMessage;
@@ -31,24 +33,39 @@ public class SnippetController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity createNewSnippet(@RequestBody CreateSnippetDTO createSnippetDTO) {
-        Snippet snippet = new Snippet();
 
-        Language l = new Language();
-        l.setId(createSnippetDTO.getLanguage());
+       String username = createSnippetDTO.getUsername();
+       User u = new User();
+       if(userService.findByUsername(username) == null){
+            u.setStatus(UserStatus.APPROVED);
+       }
+       else if(userService.findByUsername(username) != null){
+           u = userService.findByUsername(username);
+       }
 
-        snippet.setDescription(createSnippetDTO.getDescription());
-        snippet.setClip(createSnippetDTO.getClip());
-        snippet.setLanguage(l);
-        // IZMENITI!!!! Pitati sta predstavlja taj url
-        snippet.setUrl_reporsitory(createSnippetDTO.getUrl());
-        snippet.setEnd_date(createSnippetDTO.getEnd_date());
-        snippet.setState(SnippetState.APROVED);
+       username = u.getUsername();
+       if(u.getStatus() == UserStatus.APPROVED) {
 
-        snippet.setUser(userService.findByUsername("admin"));
+            Snippet snippet = new Snippet();
 
-        snippetService.save(snippet);
+            Language l = new Language();
 
-        return new ResponseEntity<>(snippet, HttpStatus.CREATED);
+            l.setId(createSnippetDTO.getLanguage());
+
+            snippet.setDescription(createSnippetDTO.getDescription());
+            snippet.setClip(createSnippetDTO.getClip());
+            snippet.setLanguage(l);
+            // IZMENITI!!!! Pitati sta predstavlja taj url
+            snippet.setUrl_reporsitory(createSnippetDTO.getUrl());
+            snippet.setEnd_date(createSnippetDTO.getEnd_date());
+            snippet.setState(SnippetState.APPROVED);
+            snippet.setUser(userService.findByUsername(username));
+
+            snippetService.save(snippet);
+
+            return new ResponseEntity<>(snippet, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(new ResponseMessage("You are blocked and unable to do this function!"), HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

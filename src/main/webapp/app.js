@@ -153,9 +153,24 @@
                     url: '/block_user',
                     views: {
                         'content': {
-                            templateUrl: 'app/users/admin/block_user.html',
+                            templateUrl: 'app/user/admin/block_user.html',
                             controller: 'BlockUserController',
                             controllerAs: 'blockUserCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar_admin.html',
+                            controller: 'NavbarAdminController',
+                            controllerAs: 'navbarAdminCtrl'
+                        }
+                    }
+                })
+                .state('get_all_snippets_admin', {
+                    url: '/get_all_snippets_admin',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/user/admin/get_all_snippets_admin.html',
+                            controller: 'AllSnippetsAdminController',
+                            controllerAs: 'AllSnippetsAdminCtrl'
                         },
                         'navbar': {
                             templateUrl: 'app/navbar/navbar_admin.html',

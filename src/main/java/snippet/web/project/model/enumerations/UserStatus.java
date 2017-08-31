@@ -1,5 +1,7 @@
 package snippet.web.project.model.enumerations;
 
-public enum SnippetState {
+public enum UserStatus {
+
     BLOCKED, APPROVED
+
 }

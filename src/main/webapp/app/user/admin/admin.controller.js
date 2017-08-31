@@ -6,6 +6,7 @@
         var vm = this;
         vm.getAllMySnippets = getAllMySnippets;
         vm.deleteSnippet = deleteSnippet;
+        vm.allMySnippets = [];
 
         getAllMySnippets();
 

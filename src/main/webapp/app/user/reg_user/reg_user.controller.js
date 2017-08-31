@@ -6,11 +6,14 @@
         var vm = this;
         vm.getAllMySnippets = getAllMySnippets;
         vm.deleteSnippet = deleteSnippet;
+        vm.allMySnippets = [];
+
+        getAllMySnippets();
 
         vm.userData = angular.fromJson($window.localStorage['loggedUser']);
         console.log("vm.userData = " + JSON.stringify(vm.userData));
 
-        getAllMySnippets();
+
 
         $scope.redirect = function(){
             $window.location.href = "http://" + $window.location.host + "/#!/user_modify";

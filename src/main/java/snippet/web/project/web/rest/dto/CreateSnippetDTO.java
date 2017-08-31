@@ -17,16 +17,19 @@ public class CreateSnippetDTO {
 
     private String url;
 
+    private String username;
+
     public CreateSnippetDTO() {
     }
 
-    public CreateSnippetDTO(long id, String description, String clip, long language, Date end_date, String url) {
+    public CreateSnippetDTO(long id, String description, String clip, long language, Date end_date, String url, String username) {
         this.id = id;
         this.description = description;
         this.clip = clip;
         this.language = language;
         this.end_date = end_date;
         this.url = url;
+        this.username = username;
     }
 
     public long getId() {
@@ -75,5 +78,13 @@ public class CreateSnippetDTO {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

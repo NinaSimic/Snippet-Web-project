@@ -24,7 +24,7 @@
             //    $scope.redirect();
 
             },function(response){
-                alert("Create new snippet failed");
+                alert("Create new programme language failed");
             });
         }
     }

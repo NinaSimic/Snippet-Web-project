@@ -36,7 +36,7 @@ public class Snippet {
     private List<Comment> comments;
 
     @ManyToOne
-    @JoinColumn(name = "user", nullable = false)
+    @JoinColumn(name = "user")
     private User user;
 
     @com.sun.istack.internal.NotNull

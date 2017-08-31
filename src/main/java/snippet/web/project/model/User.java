@@ -1,6 +1,7 @@
 package snippet.web.project.model;
 
 import snippet.web.project.model.enumerations.Role;
+import snippet.web.project.model.enumerations.UserStatus;
 
 import javax.persistence.*;
 
@@ -53,10 +54,14 @@ public class User {
   @ManyToOne
   private Authority authority;
 
+  @com.sun.istack.internal.NotNull
+  @Enumerated(EnumType.STRING)
+  private UserStatus status;
+
   public User() {
   }
 
-  public User(String username, String password, String firstname, String lastname, String phone, String email, String address, String anumber, String city, String country, String image, Role role, Authority authority) {
+  public User(String username, String password, String firstname, String lastname, String phone, String email, String address, String anumber, String city, String country, String image, Role role, Authority authority, UserStatus status) {
     this.username = username;
     this.password = password;
     this.firstname = firstname;
@@ -70,6 +75,7 @@ public class User {
     this.image = image;
     this.role = role;
     this.authority = authority;
+    this.status = status;
   }
 
   public Long getId() {
@@ -184,6 +190,14 @@ public class User {
     this.authority = authority;
   }
 
+  public UserStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(UserStatus status) {
+    this.status = status;
+  }
+
   @Override
   public String toString() {
     return "User{" +
@@ -201,6 +215,7 @@ public class User {
             ", image='" + image + '\'' +
             ", role=" + role +
             ", authority=" + authority +
+            ", status=" + status +
             '}';
   }
 }

@@ -64,9 +64,12 @@ public class RegUserController {
             List<Snippet> mySnippets = new ArrayList<>();
 
             for (Snippet s : snippetService.findAll()) {
-                if (s.getUser().getId() == user.getId()){
-                    mySnippets.add(s);
+                if(s.getUser() != null){
+                    if (s.getUser().getId() == user.getId()) {
+                        mySnippets.add(s);
+                    }
                 }
+
             }
             return new ResponseEntity<>(mySnippets, HttpStatus.OK);
         }

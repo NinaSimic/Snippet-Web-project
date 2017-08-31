@@ -1,0 +1,77 @@
+<div class="about_top">
+    <div class="container">
+        <div class="about">
+            <h1 class="blog_head" style="color: #F94B4B">All accepted users:</h1>
+
+
+            <div class="contact">
+
+
+                <div class="col-md-2 contact_left">
+
+                </div>
+                <div class="col-md-8 contact_right">
+
+                    <div class="tab-1">
+
+                        <div class="tab-1">
+                            <div  ng-repeat="u in blockUserCtrl.allUsers">
+
+                                <ul class="tab_img tab_1" >
+                                    <li>
+
+
+                                        <span class="bedrooms last">
+                                            <strong>Username</strong>
+                                            <a href="single.html">{{u.username}}</a>
+                                        </span>
+                                        <span class="area first"><strong>Name</strong><i></i>
+                                            {{u.firstname}}</span>
+                                        <span class="bedrooms last"><strong>Surname</strong>
+                                            {{u.lastname}}</span>
+
+                                        <h4 class="m_1">{{u.status}}</h4>
+
+                                        <div align = "Center" ng-if="u.status == 'BLOCKED'">
+                                            <form ng-submit="blockUserCtrl.approve(u.username)">
+                                                <label class="btn4 btn-82 btn-82c" ><input type="submit" value="Approve"></label>
+                                            </form>
+                                        </div>
+                                        <div align = "Center" ng-if="u.status == 'APPROVED'">
+                                            <form ng-submit="blockUserCtrl.block(u.username)">
+                                                <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Block"></label>
+                                            </form>
+                                        </div>
+                            </li>
+
+                            <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<div class="clearfix"> </div>
+</div>
+
+
+
+
+
+<div class="clearfix"> </div>
+</br>
+
+</div>
+</div>
