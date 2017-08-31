@@ -1,10 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="about_top">
+    <div class="container">
+        <div class="about">
+            <h1 class="blog_head" style="color: #F94B4B">Search snippets:</h1>
+            <div class="col-md-4 contact_left">
 
-</body>
-</html>
+            </div>
+            <div class="col-md-8 contact_right">
+                <div class="text-fild" align="Center">
+                    <span for="phone">If you block snippet users will not be able to comment on it any more!</span>
+
+                </div>
+            </div>
+            </br>
+
+            <div class="contact">
+
+
+                <div class="col-md-2 contact_left">
+
+                </div>
+                <div class="col-md-8 contact_right">
+
+                    <div class="tab-1">
+
+                        <div class="tab-1">
+                            <div  ng-repeat="u in allSnippetsUserCtrl.allSnippets">
+
+                                <ul class="tab_img tab_1" >
+                                    <li>
+                                        <span class="bedrooms last">
+                                            <strong>Description</strong>
+                                            <a href="single.html">{{u.description}}</a>
+                                        </span>
+                                        <span class="area first"><strong>Programme language</strong><i></i>
+                                            {{u.language.name}}</span>
+                                        <span class="bedrooms last"><strong>Exparation date</strong>
+                                            {{u.end_date}}</span>
+
+                                        <h4 class="m_1">{{u.state}}</h4>
+
+                                  <!--      <div ng-if="u.state == 'BLOCKED'">
+                                            <form ng-submit="allSnippetsUserCtrl.addComment(u.id)">
+                                                <label class="btn4 btn-82 btn-82c" ><input type="submit" value="Approve"></label>
+                                            </form>
+                                        </div> -->
+                                        <div align = "Center" ng-if="u.state == 'APPROVED'">
+                                            <form ng-submit="allSnippetsUserCtrl.addComment(u.id)">
+                                                <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Add comment"></label>
+                                            </form>
+                                        </div>
+                                    </li>
+
+                                    <div class="clearfix"></div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<div class="clearfix"> </div>
+</br>
+
+</div>
+</div>

@@ -104,6 +104,39 @@
                         }
                     }
                 })
+                .state('get_all_snippets_user', {
+                    url: '/get_all_snippets_user',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/user/reg_user/get_all_snippets_user.html',
+                            controller: 'AllSnippetsUserController',
+                            controllerAs: 'allSnippetsUserCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar.html',
+                            controller: 'NavbarController',
+                            controllerAs: 'navbarCtrl'
+                        }
+                    }
+                })
+                .state('add_comment', {
+                    url: '/add_comment',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/comment/add_comment.html',
+                            controller: 'AddCommentController',
+                            controllerAs: 'addCommentCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar.html',
+                            controller: 'NavbarController',
+                            controllerAs: 'navbarCtrl'
+                        }
+                    }
+                    ,  params: {
+                        'snippetID': null
+                    }
+                })
                 .state('profile_admin', {
                     url: '/profile_admin',
                     views: {
@@ -179,6 +212,7 @@
                         }
                     }
                 })
+
                 .state('upload_image', {
                     url: '/upload_image',
                     views: {

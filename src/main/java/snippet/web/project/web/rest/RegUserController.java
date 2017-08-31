@@ -76,4 +76,21 @@ public class RegUserController {
 
         return new ResponseEntity<>(new ResponseMessage("Loged user is not registrated user!"), HttpStatus.BAD_REQUEST);
     }
+
+    @RequestMapping(value = "/getAllSnippets", method = RequestMethod.GET)
+    public ResponseEntity getAllSnippets(@RequestHeader("X-Auth-Token") String token) {
+
+        User user = userService.findByToken(token);
+        if (user.getRole() == Role.USER){
+
+            List<Snippet> snippets = new ArrayList<>();
+
+            for(Snippet s : snippetService.findAll()){
+                snippets.add(s);
+
+            }
+            return new ResponseEntity<>(snippets, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new ResponseMessage("Loged user is registrated user!"), HttpStatus.BAD_REQUEST);
+    }
 }

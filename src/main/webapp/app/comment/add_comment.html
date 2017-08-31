@@ -1,0 +1,30 @@
+<div class="about_top">
+    <div class="container">
+        <div class="about">
+            <h1 class="blog_head" style="color: #F94B4B">Add comment</h1>
+            <div class="contact" ng-submit="addCommentCtrl.createComment()">
+                <div>
+                    <div>
+                        <form>
+                            <div class="msg-fild">
+                                <span>Description:</span>
+                                <input style="height: 300px;" type="text" class="text" ng-model="addCommentCtrl.newComment.description" value="Enter description here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter bank account number here';}">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+                <div class="col-md-3 contact_left">
+                </div>
+                <div class="col-md-6 contact_right">
+                    <form>
+                        <div align = "Center">
+                            <label class="btn1 btn-8 btn-8c"><input type="submit" value="Save"></label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

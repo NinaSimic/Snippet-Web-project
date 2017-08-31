@@ -21,7 +21,7 @@ public class Comment {
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "user", nullable = false)
+    @JoinColumn(name = "user")
     private User user;
 
     @OneToMany(cascade = CascadeType.REMOVE)
