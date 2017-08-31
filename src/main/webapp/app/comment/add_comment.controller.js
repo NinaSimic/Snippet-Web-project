@@ -8,9 +8,9 @@
 
         var vm = this;
         vm.createComment = createComment;
-        var snippetID = $stateParams.snippetID;
+        vm.snippetID = $stateParams.snippetID;
 
-        console.log("dobacio snippet ID " + snippetID);
+        console.log("dobacio snippet ID " + vm.snippetID);
 
         vm.userData = angular.fromJson($window.localStorage['loggedUser']);
 
@@ -47,7 +47,8 @@
 
             vm.new_comment = {
                 description : vm.newComment.description,
-                user : vm.username
+                user : vm.username,
+                snippet: vm.snippetID
 
             }
 

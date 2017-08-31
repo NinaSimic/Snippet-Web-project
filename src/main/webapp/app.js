@@ -167,6 +167,21 @@
                         }
                     }
                 })
+                .state('add_snippet_admin', {
+                    url: '/add_snippet_admin',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/snippet/add_snippet_admin.html',
+                            controller: 'AddSnippetAdminController',
+                            controllerAs: 'addSnippetAdminCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar_admin.html',
+                            controller: 'NavbarAdminController',
+                            controllerAs: 'navbarAdminCtrl'
+                        }
+                    }
+                })
                 .state('add_prog_language', {
                     url: '/add_prog_language',
                     views: {
@@ -247,6 +262,36 @@
                         'content': {
                             templateUrl: 'app/static/about.html',
 
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar.html',
+                            controller: 'NavbarController',
+                            controllerAs: 'navbarCtrl'
+                        }
+                    }
+                })
+                .state('single_snippet_admin', {
+                    url: '/single_snippet_admin',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/snippet/single_snippet_admin.html',
+                            controller: 'SingleSnippetAdminController',
+                            controllerAs: 'SingleSnippetAdminCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar_admin.html',
+                            controller: 'NavbarAdminController',
+                            controllerAs: 'navbarAdminCtrl'
+                        }
+                    }
+                })
+                .state('get_all_snippets_notlogged', {
+                    url: '/get_all_snippets_notlogged',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/user/not_logged/get_all_snippets_notlogged.html',
+                            controller: 'AllSnippetsNotloggedController',
+                            controllerAs: 'allSnippetsNotloggedCtrl'
                         },
                         'navbar': {
                             templateUrl: 'app/navbar/navbar.html',

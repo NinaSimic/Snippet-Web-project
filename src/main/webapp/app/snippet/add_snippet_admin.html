@@ -1,0 +1,97 @@
+<div class="about_top">
+    <div class="container">
+        <div class="about">
+            <h1 class="blog_head" style="color: #F94B4B">Add new snippet</h1>
+
+            <div class="contact" ng-submit="addSnippetAdminCtrl.createSnippet()">
+
+                <div>
+                    <div>
+
+                        <form>
+
+                            <div class="msg-fild">
+                                <span>Description:</span>
+                                <input type="text" class="text" ng-model="addSnippetAdminCtrl.newSnippet.description" value="Enter description here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter bank account number here';}">
+                            </div>
+                            <div class="text-fild">
+                                <span >Enter\Paste input:</span>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+                <div ui-ace="{
+                        onLoad: aceLoaded,
+                        onChange: aceChanged
+                            }">
+
+                </div>
+                <div>
+                    <!--      <div class="text-fild">
+                              <span for="name">Choose programme language:</span> <br>
+                          </div> -->
+                </div>
+                <br>
+                <div class="text">
+                    <div class="text-fild">
+                        <span for="name">Select program language:</span>
+                    </div>
+                </div>
+                <div class="text">
+                    <div class="text-fild">
+
+                        <select style="line-height: 44px; float:left;
+  							border: 1px solid #DAD8D8;
+  							width: 370px;" ng-model="addSnippetAdminCtrl.newSnippet.language" required>
+                            <option style="color: #F94B4B;" ng-repeat="t in addSnippetAdminCtrl.types" value="{{t.id}}">{{t.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+
+
+                </div>
+
+
+
+
+
+
+                <div class="text-fild">
+                    <div class="text-fild" style="width: 370px;">
+                        <span for="username">URL:</span>
+                        <input type="text" class="text" id="url" ng-model="addSnippetAdminCtrl.newSnippet.url" required value="Enter url here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter username here';}">
+                    </div>
+                    <div class="clearfix"> </div>
+                    <span for="end_date">Enter exparation date:</span>
+                    </br>
+                    <input type="date" class="text" id="end_date" ng-model="addSnippetAdminCtrl.newSnippet.end_date" required value="Enter date of birth here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter date of birth here';}">
+                </div>
+
+
+
+
+
+
+
+                <div class="clearfix"> </div>
+                <div class="col-md-3 contact_left">
+
+                </div>
+                <div class="col-md-6 contact_right">
+                    <form>
+                        <div align = "Center">
+
+                            <label class="btn1 btn-8 btn-8c"><input type="submit" value="Save"></label>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

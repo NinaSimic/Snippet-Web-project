@@ -2,11 +2,11 @@
 (function () {
 
     angular.module("snippetApp")
-        .controller('AddSnippetController',AddSnippetController);
+        .controller('AddSnippetAdminController',addSnippetAdminController);
 
 
     //register page controller
-    function AddSnippetController($http, $scope, $window, LanguageService,LoginFactory) {
+    function addSnippetAdminController($http, $scope, $window, LanguageService) {
 
         var vm = this;
         vm.createSnippet = createSnippet;
@@ -16,7 +16,7 @@
         $scope.modes = [];
         $scope.mode = [];
         vm.userData = angular.fromJson($window.localStorage['loggedUser']);
-
+        vm.username = vm.userData.username;
         console.log("vm.userData = " + JSON.stringify(vm.userData));
 
         $scope.aceLoaded = function(_editor) {
@@ -24,17 +24,6 @@
             vm.ace = _editor;
             //  _editor.setReadOnly(true);
         };
-
-        console.log("user data" + vm.userData);
-        if(vm.userData === undefined) {
-            console.log("usao u if");
-            // obj is a valid variable, do something here.
-            vm.username = "anonimus";
-        }
-        else{
-            vm.username = vm.userData.username;
-        }
-
 
 
         LanguageService.getAllLanguages().then(function(response){
@@ -45,7 +34,7 @@
 
             }
             $scope.mode = $scope.modes[0];
-           console.log("imena jezika: " , $scope.mode );
+            console.log("imena jezika: " , $scope.mode );
 
             $scope.aceOption = {
                 mode: $scope.mode.toLowerCase(),
@@ -66,12 +55,9 @@
         });
 
         $scope.redirect = function(){
-            if(vm.userData === undefined){
-                $window.location.href = "http://" + $window.location.host + "/#!/home";
-            }
-            else if(vm.userData.role == "USER"){
-                $window.location.href = "http://" + $window.location.host + "/#!/profile";
-            }
+
+                $window.location.href = "http://" + $window.location.host + "/#!/profile_admin";
+
         }
 
         console.log("user" + vm.username);

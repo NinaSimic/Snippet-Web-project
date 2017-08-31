@@ -13,6 +13,7 @@ import snippet.web.project.service.UserService;
 import snippet.web.project.util.ResponseMessage;
 import snippet.web.project.web.rest.dto.RegisterDTO;
 
+import javax.xml.transform.sax.SAXSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +78,7 @@ public class RegUserController {
         return new ResponseEntity<>(new ResponseMessage("Loged user is not registrated user!"), HttpStatus.BAD_REQUEST);
     }
 
+    // get all snippets which are not mine
     @RequestMapping(value = "/getAllSnippets", method = RequestMethod.GET)
     public ResponseEntity getAllSnippets(@RequestHeader("X-Auth-Token") String token) {
 
@@ -86,8 +88,10 @@ public class RegUserController {
             List<Snippet> snippets = new ArrayList<>();
 
             for(Snippet s : snippetService.findAll()){
-                snippets.add(s);
-
+                System.out.println("user od snippeta "+ s.getUser() + "user koji je ulogovan " + user.getUsername());
+                if(!(s.getUser().getUsername().equals(user.getUsername()))){
+                    snippets.add(s);
+                }
             }
             return new ResponseEntity<>(snippets, HttpStatus.OK);
         }

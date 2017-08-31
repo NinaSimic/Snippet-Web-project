@@ -6,13 +6,14 @@
                 <div>
                     <div>
                         <form>
-                            <div class="msg-fild">
-                                <span>Description:</span>
-                                <input style="height: 300px;" type="text" class="text" ng-model="addCommentCtrl.newComment.description" value="Enter description here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter bank account number here';}">
+                            <div class="message-fild">
+                                <span >Description:</span>
+                                <textarea ng-model="addCommentCtrl.newComment.description" style="height: 300px;"> </textarea>
                             </div>
                         </form>
                     </div>
                 </div>
+                </br>
                 <div class="clearfix"> </div>
                 <div class="col-md-3 contact_left">
                 </div>

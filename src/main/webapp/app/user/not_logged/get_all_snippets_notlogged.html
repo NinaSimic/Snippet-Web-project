@@ -24,7 +24,7 @@
                     <div class="tab-1">
 
                         <div class="tab-1">
-                            <div  ng-repeat="u in allSnippetsUserCtrl.allSnippets">
+                            <div  ng-repeat="u in allSnippetsNotloggedCtrl.allSnippets">
 
                                 <ul class="tab_img tab_1" >
                                     <li>
@@ -39,13 +39,13 @@
 
                                         <h4 class="m_1">{{u.state}}</h4>
 
-                                  <!--      <div ng-if="u.state == 'BLOCKED'">
-                                            <form ng-submit="allSnippetsUserCtrl.addComment(u.id)">
-                                                <label class="btn4 btn-82 btn-82c" ><input type="submit" value="Approve"></label>
-                                            </form>
-                                        </div> -->
+                                        <!--      <div ng-if="u.state == 'BLOCKED'">
+                                                  <form ng-submit="allSnippetsUserCtrl.addComment(u.id)">
+                                                      <label class="btn4 btn-82 btn-82c" ><input type="submit" value="Approve"></label>
+                                                  </form>
+                                              </div> -->
                                         <div align = "Center" ng-if="u.state == 'APPROVED'">
-                                            <form ng-submit="AllSnippetsUserCtrl.addComment(u.id)">
+                                            <form ng-submit="allSnippetsNotloggedCtrl.addComment(u.id)">
                                                 <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Add comment"></label>
                                             </form>
                                         </div>

@@ -88,4 +88,14 @@ public class SnippetController {
         return new ResponseEntity<>(new ResponseMessage("You are not allowed to delete advertisement!"), HttpStatus.BAD_REQUEST);
 
     }
+
+    // get all snippets
+    @RequestMapping(value = "/getAllSnippets", method = RequestMethod.GET)
+    public ResponseEntity getAllSnippets() {
+
+            List<Snippet> snippets = snippetService.findAll();
+
+            return new ResponseEntity<>(snippets, HttpStatus.OK);
+
+    }
 }

@@ -88,8 +88,8 @@
                                         <h4 class="m_1">{{s.state}}</h4>
 
                                         <div align = "Center">
-                                            <form ng-submit="getAllRealEstatesCtrl.redirect2(o.id)" >
-                                                <label class="btn4 btn-82 btn-82c"><input type="submit" value="Edit"></label>
+                                            <form ng-submit="adminCtrl.getDetails(s.id)" >
+                                                <label class="btn4 btn-82 btn-82c"><input type="submit" value="Details"></label>
                                             </form>
                                             <form ng-submit="adminCtrl.deleteSnippet(s.id)">
                                                 <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Delete"></label>

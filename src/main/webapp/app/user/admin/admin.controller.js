@@ -29,6 +29,10 @@
 
         }
 
+        vm.getDetails = function (id) {
+        // /    $scope.redirect();
+        }
+
         vm.change = function () {
             $scope.redirect();
         }

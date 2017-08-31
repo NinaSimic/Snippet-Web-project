@@ -43,7 +43,8 @@ public class Comment {
         this.grades = grades;
         this.number_positive = number_positive;
         this.number_negative = number_negative;
-    }
+
+}
 
     public long getId() {
         return id;

@@ -6,15 +6,20 @@ public class CreateCommentDTO {
 
     private String description;
 
+    // username usera koji je ostavio komentar
     private String user;
+
+    // id snippeta na koji je ostavio komentar
+    private Long snippet;
 
     public CreateCommentDTO() {
     }
 
-    public CreateCommentDTO(long id, String description, String user) {
+    public CreateCommentDTO(long id, String description, String user, Long snippet) {
         this.id = id;
         this.description = description;
         this.user = user;
+        this.snippet = snippet;
     }
 
     public long getId() {
@@ -39,5 +44,13 @@ public class CreateCommentDTO {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public Long getSnippet() {
+        return snippet;
+    }
+
+    public void setSnippet(Long snippet) {
+        this.snippet = snippet;
     }
 }
