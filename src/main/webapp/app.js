@@ -9,7 +9,8 @@
             'restangular',
             'ui.router',
             'ui.ace',
-            'ngFileUpload'
+            'ngFileUpload',
+            'ngMap'
         ])
         .config(function($routeProvider,$stateProvider,$urlRouterProvider, $httpProvider){
 
@@ -283,6 +284,9 @@
                             controller: 'NavbarAdminController',
                             controllerAs: 'navbarAdminCtrl'
                         }
+                    }
+                    ,  params: {
+                        'snippetID': null
                     }
                 })
                 .state('get_all_snippets_notlogged', {

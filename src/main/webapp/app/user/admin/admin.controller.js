@@ -2,16 +2,20 @@
 (function() {
     angular.module("snippetApp").controller("AdminController", adminController);
 
-    function adminController($http, $window, $scope, LoginFactory) {
+    function adminController($http, $window, $scope, LoginFactory, $state) {
         var vm = this;
         vm.getAllMySnippets = getAllMySnippets;
         vm.deleteSnippet = deleteSnippet;
         vm.allMySnippets = [];
 
         getAllMySnippets();
+      //  loadMap(NgMap);
 
         vm.userData = angular.fromJson($window.localStorage['loggedUser']);
+
         console.log("vm.userData = " + JSON.stringify(vm.userData));
+
+        vm.position = "\""+vm.userData.address+" " + vm.userData.anumber + " " + vm.userData.city + " " + vm.userData.country;
 
         function getAllMySnippets() {
 
@@ -30,7 +34,7 @@
         }
 
         vm.getDetails = function (id) {
-        // /    $scope.redirect();
+            $state.go('single_snippet_admin', {snippetID:id});
         }
 
         vm.change = function () {
@@ -87,9 +91,6 @@
                     });
             }
         }
-
-
-
     }
 })();
 

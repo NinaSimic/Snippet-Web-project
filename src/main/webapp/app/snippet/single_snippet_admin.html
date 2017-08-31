@@ -3,7 +3,7 @@
         <div class="about">
             <h1 class="blog_head" style="color: #F94B4B">Details of selected snippet</h1>
 
-            <div class="contact" ng-submit="addSnippetCtrl.createSnippet()">
+            <div class="contact" >
 
                 <div>
                     <div>
@@ -12,7 +12,7 @@
 
                             <div class="msg-fild">
                                 <span>Description:</span>
-                                <input type="text" class="text" ng-model="addSnippetCtrl.newSnippet.description" value="Enter description here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter bank account number here';}">
+                                <input type="text" class="text" ng-model="SingleSnippetAdminCtrl.snippetData.description" disabled>
                             </div>
                             <div class="text-fild">
                                 <span >Enter\Paste input:</span>
@@ -44,8 +44,8 @@
 
                         <select style="line-height: 44px; float:left;
   							border: 1px solid #DAD8D8;
-  							width: 370px;" ng-model="addSnippetCtrl.newSnippet.language" required>
-                            <option style="color: #F94B4B;" ng-repeat="t in addSnippetCtrl.types" value="{{t.id}}">{{t.name}}</option>
+  							width: 370px;" ng-model="SingleSnippetAdminCtrl.snippetData.language" disabled>
+                            <option style="color: #F94B4B;" ng-repeat="t in SingleSnippetAdminCtrl.snippetData.types" value="{{t.id}}">{{t.name}} disabled</option>
                         </select>
                     </div>
                 </div>
@@ -63,19 +63,13 @@
                 <div class="text-fild">
                     <div class="text-fild" style="width: 370px;">
                         <span for="username">URL:</span>
-                        <input type="text" class="text" id="url" ng-model="addSnippetCtrl.newSnippet.url" required value="Enter url here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter username here';}">
+                        <input type="text" class="text" id="url" ng-model="SingleSnippetAdminCtrl.snippetData.url_reporsitory" disabled>
                     </div>
                     <div class="clearfix"> </div>
                     <span for="end_date">Enter exparation date:</span>
                     </br>
-                    <input type="date" class="text" id="end_date" ng-model="addSnippetCtrl.newSnippet.end_date" required value="Enter date of birth here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter date of birth here';}">
+                    <input  style="width: 370px;" type="text" class="text" id="end_date" ng-model="SingleSnippetAdminCtrl.snippetData.end_date | date:'dd.MM.yyyy'" disabled>
                 </div>
-
-
-
-
-
-
 
                 <div class="clearfix"> </div>
                 <div class="col-md-3 contact_left">

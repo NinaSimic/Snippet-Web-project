@@ -98,4 +98,14 @@ public class SnippetController {
             return new ResponseEntity<>(snippets, HttpStatus.OK);
 
     }
+
+    // get data of one snippet
+    @RequestMapping(value = "/get_snippet_data/{id}", method = RequestMethod.GET)
+    public ResponseEntity getSnippetData(@PathVariable Long id) {
+
+        Snippet snippet = snippetService.findById(id);
+
+        return new ResponseEntity<>(snippet, HttpStatus.OK);
+
+    }
 }

@@ -13,6 +13,7 @@
         vm.userData = angular.fromJson($window.localStorage['loggedUser']);
         console.log("vm.userData = " + JSON.stringify(vm.userData));
 
+        vm.position = "\""+vm.userData.address+" " + vm.userData.anumber + " " + vm.userData.city + " " + vm.userData.country;
 
 
         $scope.redirect = function(){
