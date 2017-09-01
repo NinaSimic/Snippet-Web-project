@@ -2,14 +2,10 @@
     <div class="container">
         <div class="about">
             <h1 class="blog_head" style="color: #F94B4B">Details of selected snippet</h1>
-
             <div class="contact" >
-
                 <div>
                     <div>
-
                         <form>
-
                             <div class="msg-fild">
                                 <span>Description:</span>
                                 <input type="text" class="text" ng-model="SingleSnippetAdminCtrl.snippetData.description" disabled>
@@ -17,75 +13,127 @@
                             <div class="text-fild">
                                 <span >Enter\Paste input:</span>
                             </div>
-
-
                         </form>
                     </div>
                 </div>
                 <div ui-ace="{
                         onLoad: aceLoaded,
                         onChange: aceChanged
-                            }">
-
-                </div>
-                <div>
-                    <!--      <div class="text-fild">
-                              <span for="name">Choose programme language:</span> <br>
-                          </div> -->
-                </div>
-                <br>
-                <div class="text">
-                    <div class="text-fild">
-                        <span for="name">Select program language:</span>
-                    </div>
-                </div>
-                <div class="text">
-                    <div class="text-fild">
-
-                        <select style="line-height: 44px; float:left;
-  							border: 1px solid #DAD8D8;
-  							width: 370px;" ng-model="SingleSnippetAdminCtrl.snippetData.language" disabled>
-                            <option style="color: #F94B4B;" ng-repeat="t in SingleSnippetAdminCtrl.snippetData.types" value="{{t.id}}">{{t.name}} disabled</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-
-
-                </div>
-
-
-
-
-
-
-                <div class="text-fild">
-                    <div class="text-fild" style="width: 370px;">
-                        <span for="username">URL:</span>
-                        <input type="text" class="text" id="url" ng-model="SingleSnippetAdminCtrl.snippetData.url_reporsitory" disabled>
-                    </div>
-                    <div class="clearfix"> </div>
-                    <span for="end_date">Enter exparation date:</span>
-                    </br>
-                    <input  style="width: 370px;" type="text" class="text" id="end_date" ng-model="SingleSnippetAdminCtrl.snippetData.end_date | date:'dd.MM.yyyy'" disabled>
-                </div>
-
-                <div class="clearfix"> </div>
-                <div class="col-md-3 contact_left">
-
-                </div>
-                <div class="col-md-6 contact_right">
-                    <form>
-                        <div align = "Center">
-
-                            <label class="btn1 btn-8 btn-8c"><input type="submit" value="Save"></label>
-
-                        </div>
-                    </form>
+                    }" ng-model="SingleSnippetAdminCtrl.snippetData.clip">
                 </div>
             </div>
         </div>
+        <br>
+        <div class="text">
+            <div class="text-fild">
+                <span for="name">Selected program language:</span>
+            </div>
+        </div>
+        <div class="text">
+            <div class="text-fild">
+                <input  style="width: 370px;"type="text" class="text" id="url" ng-model="SingleSnippetAdminCtrl.snippetData.language.name" disabled>
+            </div>
+        </div>
+        <div>
+        </div>
+        <div class="text-fild">
+            <div class="text-fild" style="width: 370px;">
+                <span for="username">URL:</span>
+                <input type="text" class="text" id="url" ng-model="SingleSnippetAdminCtrl.snippetData.url_reporsitory" disabled>
+            </div>
+            <div class="clearfix"> </div>
+                <span for="end_date">Enter exparation date:</span>
+                </br>
+                <input  style="width: 370px;" type="text" class="text" id="end_date" ng-model="SingleSnippetAdminCtrl.snippetData.end_date | date:'dd.MM.yyyy'" disabled>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="col-md-2 contact_left">
+        </div>
+        <div class="col-md-8 contact_right">
+            <form>
+                <div align = "Center">
+                    <form>
+                        <label ng-click="SingleSnippetAdminCtrl.redirect()" class="btn1 btn-8 btn-8c"><input type="submit" value="OK"></label>
+                    </form>
+                    <div align = "Center" ng-if="SingleSnippetAdminCtrl.snippetData.state == 'APPROVED'">
+                        <form ng-submit="SingleSnippetAdminCtrl.addComment(SingleSnippetAdminCtrl.snippetData.id)">
+                            <label class="btn4 btn-82 btn-82c"  ><input  type="submit" value="Add comment"></label>
+                        </form>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="col-md-3 contact_left">
+
+        </div>
+        <div class="col-md-6 contact_right">
+            <div></br></br>
+
+            </div>
+            <h1 class="blog_head" style="color: #F94B4B">Comments:</h1>
+        </div>
+
+        <div class="col-md-8 contact_right">
+
+            <div  ng-repeat="c in SingleSnippetAdminCtrl.allComments">
+                <div>
+                    <div>
+                        <form>
+                            <div class="text-fild">
+                                <span >Comment description:</span>
+                            </div>
+                            <div class="message-fild">
+                                <div><br></div>
+
+                                <textarea ng-model="c.description" style="height: 200px;width: 1120px;" disabled> </textarea>
+                            </div>
+
+                            <div class="text">
+                                <div class="text-fild">
+                                    </br>
+                                    <div class="col-md-5 contact_right">
+                                    <span for="username">Possitive grades:  {{c.number_positive}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            <div class="clearfix"> </div>
+                            <div align = "Center">
+                                    <div class="col-md-1 contact_right">
+                                        <form ng-submit="adminCtrl.getDetails(s.id)" >
+                                            <label class="btn4 btn-82 btn-82c"><input type="submit" value="+"></label>
+                                        </form>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                            <div class="text-fild">
+                                </br>
+                                <div class="col-md-5 contact_right">
+                                <span for="password">Negative grades:  {{c.number_negative}}</span>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                            <div align = "Center">
+
+                                <div class="col-md-1 contact_right">
+                                    <form ng-submit="adminCtrl.deleteSnippet(s.id)">
+                                        <label class="btn1 btn-8 btn-8c" ><input style="align-content: center"  type="submit" value="-"></label>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </form>
+                    </div>
+
+                            </br></br>
+
+                    </div>
+
+                </div>
+
+        </div>
+
     </div>
 </div>
-

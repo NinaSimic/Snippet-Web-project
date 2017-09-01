@@ -3,10 +3,7 @@ package snippet.web.project.web.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import snippet.web.project.model.Comment;
 import snippet.web.project.model.Snippet;
 import snippet.web.project.model.User;
@@ -17,6 +14,7 @@ import snippet.web.project.service.UserService;
 import snippet.web.project.util.ResponseMessage;
 import snippet.web.project.web.rest.dto.CreateCommentDTO;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -67,4 +65,17 @@ public class CommentContoller {
         }
         return new ResponseEntity<>(new ResponseMessage("You are blocked and unable to do this function!"), HttpStatus.BAD_REQUEST);
     }
+    // get all comments of one snippet
+    @RequestMapping(value = "/getAllComments/{id}", method = RequestMethod.GET)
+    public ResponseEntity getAllComments(@PathVariable Long id) {
+
+        System.out.println("stigao u get all comments id snippeta " + id);
+
+        Snippet snippet = snippetService.findById(id);
+        List<Comment> snippetComments = snippet.getComments();
+
+        return new ResponseEntity<>(snippetComments, HttpStatus.OK);
+
+    }
+
 }

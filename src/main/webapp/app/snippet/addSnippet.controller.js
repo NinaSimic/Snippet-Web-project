@@ -6,7 +6,7 @@
 
 
     //register page controller
-    function AddSnippetController($http, $scope, $window, LanguageService,LoginFactory) {
+    function AddSnippetController($http, $scope, $window, LanguageService) {
 
         var vm = this;
         vm.createSnippet = createSnippet;

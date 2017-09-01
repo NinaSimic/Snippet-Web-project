@@ -88,10 +88,19 @@ public class RegUserController {
             List<Snippet> snippets = new ArrayList<>();
 
             for(Snippet s : snippetService.findAll()){
-                System.out.println("user od snippeta "+ s.getUser() + "user koji je ulogovan " + user.getUsername());
-                if(!(s.getUser().getUsername().equals(user.getUsername()))){
+       //         System.out.println("user od snippeta "+ s.getUser().getUsername() + "user koji je ulogovan " + user.getUsername());
+                if(s.getUser() != null){
+                    System.out.println("usao u if");
+                    if(!(s.getUser().getUsername().equals(user.getUsername()))){
+                        snippets.add(s);
+                    }
+                }
+                else{
+                    System.out.println("usao u else");
                     snippets.add(s);
                 }
+
+
             }
             return new ResponseEntity<>(snippets, HttpStatus.OK);
         }

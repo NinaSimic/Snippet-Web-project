@@ -6,23 +6,24 @@
 
 
     //register page controller
-    function singleSnippetAdminController($http, $scope, $window, LanguageService, $stateParams) {
+    function singleSnippetAdminController($http, $scope, $window, LanguageService, $stateParams, $state) {
 
         var vm = this;
         vm.getSnippetData = getSnippetData;
         vm.snippetID = $stateParams.snippetID;
+        vm.getAllComments = getAllComments;
 
         console.log("primio snippetid " + vm.snippetID);
 
         getSnippetData();
+        getAllComments();
         vm.types = [];
         vm.ace = null;
+        vm.redirect = redirect;
 
         $scope.modes = [];
         $scope.mode = [];
-    //    vm.userData = angular.fromJson($window.localStorage['loggedUser']);
-
-    //    console.log("vm.userData = " + JSON.stringify(vm.userData));
+        vm.userData = angular.fromJson($window.localStorage['loggedUser']);
 
         $scope.aceLoaded = function(_editor) {
             // Options
@@ -30,17 +31,16 @@
             _editor.setReadOnly(true);
         };
 
-        console.log("user data" + vm.userData);
-        if(vm.userData === undefined) {
-            console.log("usao u if");
-            // obj is a valid variable, do something here.
-            vm.username = "anonimus";
-        }
-        else{
-            vm.username = vm.userData.username;
+        vm.addComment = function (id) {
+
+            //$window.location.href = "http://" + $window.location.host + "/#!/activateSednica";
+            $state.go('add_comment', {snippetID:id});
+
         }
 
-
+        function redirect(){
+                $window.location.href = "http://" + $window.location.host + "/#!/profile_admin";
+        }
 
         LanguageService.getAllLanguages().then(function(response){
             vm.types = response.data;
@@ -57,6 +57,7 @@
 
                 onLoad: function (_ace) {
                     vm.ace = _ace;
+
                     // HACK to have the ace instance in the scope...
                     $scope.modeChanged = function () {
                         _ace.getSession().setMode('ace/mode/' + $scope.mode.toLowerCase());
@@ -70,7 +71,18 @@
 
         });
 
-        function getSnippetData(snippetID) {
+
+        function getAllComments() {
+
+            $http.get('/api/comment/getAllComments/' + vm.snippetID)
+                .then(function(response) {
+                    vm.allComments = response.data;
+                }, function(response) {
+                    alert(JSON.stringify(response.data));
+                });
+        }
+
+        function getSnippetData() {
 
             $http.get('/api/snippet/get_snippet_data/' + vm.snippetID)
                 .then(function(response) {
