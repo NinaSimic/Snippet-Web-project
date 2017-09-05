@@ -6,15 +6,27 @@
 
             <div class="contact">
 
-
-                <div class="col-md-2 contact_left">
+                <div class="col-md-4 contact_left">
 
                 </div>
-                <div class="col-md-8 contact_right">
+                <div class="col-md-6 contact_right">
 
                     <div class="tab-1">
 
                         <div class="tab-1">
+                            <div class="col-md-4" >
+                                <div  class="text-fild" style="width: 355px;">
+                                    <input  type="text" class="text" ng-model="blockUserCtrl.filterConteiner.username" placeholder="Search by username...">
+                                </div>
+                            </div>
+                            <div align = "Center">
+                                <form ng-submit="blockUserCtrl.setFilter()">
+                                    <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Search"></label>
+                                </form>
+                            </div>
+
+                            <div class="clearfix"></div></br>
+
                             <div  ng-repeat="u in blockUserCtrl.allUsers">
 
                                 <ul class="tab_img tab_1" >
@@ -24,11 +36,11 @@
                                         <span class="bedrooms last">
                                             <strong>Username</strong>
                                             <a href="single.html">{{u.username}}</a>
-                                        </span>
+                                        </span></br>
                                         <span class="area first"><strong>Name</strong><i></i>
-                                            {{u.firstname}}</span>
+                                            {{u.firstname}}</span></br>
                                         <span class="bedrooms last"><strong>Surname</strong>
-                                            {{u.lastname}}</span>
+                                            {{u.lastname}}</span></br>
 
                                         <h4 class="m_1">{{u.status}}</h4>
 

@@ -12,18 +12,30 @@
         vm.createSnippet = createSnippet;
         vm.types = [];
         vm.ace = null;
+        vm.expirations = [ { name: "NEVER", duration: -1},{ name: "2 minutes", duration: 2*60*1000}, { name: "10 days", duration: 10*24*3600*1000}, { name: "1 month", duration: 30*24*3600*1000}] ;
 
         $scope.modes = [];
         $scope.mode = [];
         vm.userData = angular.fromJson($window.localStorage['loggedUser']);
         vm.username = vm.userData.username;
-        console.log("vm.userData = " + JSON.stringify(vm.userData));
+
+        vm.newSnippet = {
+            description : null,
+            clip :  null,
+            language:  null,
+            url:  null,
+            end_date : vm.expirations[0].name,
+            username :  null
+
+        };
 
         $scope.aceLoaded = function(_editor) {
             // Options
             vm.ace = _editor;
             //  _editor.setReadOnly(true);
         };
+
+        vm.todaysDate = new Date();
 
 
         LanguageService.getAllLanguages().then(function(response){
@@ -62,7 +74,18 @@
 
         console.log("user" + vm.username);
         function createSnippet () {
-            console.log("USAO U KREIRANJE SNIPPETA");
+         //   console.log("USAO U KREIRANJE SNIPPETA");
+
+            // Validacije
+            if(!$scope.descriptionForm.$valid){
+                alert("All fields are required! Make sure you filled them correctly.");
+                return;
+            }
+
+            if(!$scope.otherForm.$valid){
+                alert("All fields are required! Make sure you filled them correctly.");
+                return;
+            }
 
             vm.new_snippet = {
                 description : vm.newSnippet.description,

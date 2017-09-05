@@ -6,7 +6,12 @@
 	<groupId>snippet.web.project</groupId>
 	<artifactId>snippet-web-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
+	<!-- Uncomment if you want to run as jar-->
 	<packaging>jar</packaging>
+
+	<!-- Comment if you want to run as jar
+	<packaging>war</packaging>-->
 
 	<name>snippet-web-project</name>
 	<description>Demo project for Spring Boot with JPA and persisting H2 database</description>
@@ -21,6 +26,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
+		<tomcat.version>7.0.81</tomcat.version>
 	</properties>
 
 	<dependencies>
@@ -29,7 +35,21 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+	<!-- Comment if you want to run as jar
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+-->
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -58,6 +78,12 @@
 			<artifactId>spring-boot-test</artifactId>
 			<version>1.4.1.RELEASE</version>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -85,6 +111,12 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -1,14 +1,14 @@
 <div class="about_top">
     <div class="container">
         <div class="about">
-            <div class="contact" ng-submit="addCommentCtrl.createComment()">
+            <div class="contact"  ng-submit="addCommentCtrl.createComment()">
                 <div>            <h1 class="blog_head" style="color: #F94B4B">Add comment</h1>
 
                     <div>
-                        <form>
+                        <form name="commentForm">
                             <div class="message-fild">
                                 <span >Description:</span>
-                                <textarea ng-model="addCommentCtrl.newComment.description" style="height: 300px;"> </textarea>
+                                <textarea ng-model="addCommentCtrl.newComment.description" required style="height: 300px;"> </textarea>
                             </div>
                         </form>
                     </div>

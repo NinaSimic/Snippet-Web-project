@@ -1,5 +1,7 @@
 package snippet.web.project.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -33,18 +35,22 @@ public class Comment {
     @Column(name = "number_negative", nullable = false)
     private int number_negative;
 
+    @ManyToOne
+    @JsonBackReference
+    private Snippet snippet;
+
     public Comment() {
     }
 
-    public Comment(String description, Date date, User user, List<Grade> grades, int number_positive, int number_negative) {
+    public Comment(String description, Date date, User user, List<Grade> grades, int number_positive, int number_negative, Snippet snippet) {
         this.description = description;
         this.date = date;
         this.user = user;
         this.grades = grades;
         this.number_positive = number_positive;
         this.number_negative = number_negative;
-
-}
+        this.snippet = snippet;
+    }
 
     public long getId() {
         return id;
@@ -102,6 +108,14 @@ public class Comment {
         this.number_negative = number_negative;
     }
 
+    public Snippet getSnippet() {
+        return snippet;
+    }
+
+    public void setSnippet(Snippet snippet) {
+        this.snippet = snippet;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
@@ -112,6 +126,22 @@ public class Comment {
                 ", grades=" + grades +
                 ", number_positive=" + number_positive +
                 ", number_negative=" + number_negative +
+                ", snippet=" + snippet +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Comment comment = (Comment) o;
+
+        return id == comment.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
 }

@@ -8,11 +8,11 @@
                 <div>
                     <div>
 
-                        <form>
+                        <form name="descriptionForm">
 
                             <div class="msg-fild">
                                 <span>Description:</span>
-                                <input type="text" class="text" ng-model="addSnippetAdminCtrl.newSnippet.description" value="Enter description here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter bank account number here';}">
+                                <input type="text" class="text" ng-model="addSnippetAdminCtrl.newSnippet.description" required value="Enter description here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter bank account number here';}">
                             </div>
                             <div class="text-fild">
                                 <span >Enter\Paste input:</span>
@@ -34,6 +34,7 @@
                           </div> -->
                 </div>
                 <br>
+                <form name="otherForm">
                 <div class="text">
                     <div class="text-fild">
                         <span for="name">Select program language:</span>
@@ -66,10 +67,18 @@
                         <input type="text" class="text" id="url" ng-model="addSnippetAdminCtrl.newSnippet.url" required value="Enter url here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter username here';}">
                     </div>
                     <div class="clearfix"> </div>
-                    <span for="end_date">Enter exparation date:</span>
+                    <span for="end_date">Enter expiration date:</span>
                     </br>
-                    <input type="date" class="text" id="end_date" ng-model="addSnippetAdminCtrl.newSnippet.end_date" required value="Enter date of birth here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter date of birth here';}">
-                </div>
+                    <div class="text">
+                        <div class="text-fild">
+
+                            <select style="line-height: 44px; float:left;
+                                border: 1px solid #DAD8D8;
+                                width: 370px;" ng-model="addSnippetCtrl.newSnippet.end_date" required>
+                                <option style="color: #F94B4B;" ng-repeat="t in addSnippetCtrl.expirations" value="{{t.name}}">{{t.name}}</option>
+                            </select>
+                        </div>
+                    </div>
 
 
 
@@ -90,6 +99,7 @@
                         </div>
                     </form>
                 </div>
+                </form>
             </div>
         </div>
     </div>

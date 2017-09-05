@@ -25,6 +25,7 @@ import snippet.web.project.web.rest.dto.RegisterDTO;
 import snippet.web.project.web.rest.dto.RegisterResponseDTO;
 import snippet.web.project.web.rest.dto.UserDTO;
 
+import javax.servlet.ServletContext;
 import java.io.IOException;
 
 @RestController
@@ -46,6 +47,9 @@ public class UserController {
 
     @Autowired
     private TokenUtils tokenUtils;
+
+    @Autowired
+    ServletContext servletContext;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity login(@RequestBody LoginDTO loginDTO) {
@@ -165,13 +169,16 @@ public class UserController {
         String imageUrl = "";
         try {
 
-            imageUrl = userService.saveUploadedFiles(uploadfile, id);
+            String realPath = servletContext.getRealPath("/");
+
+            imageUrl = userService.saveUploadedFiles(realPath, uploadfile, id);
 
         } catch (IOException e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity(imageUrl, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity(new ResponseMessage(imageUrl), new HttpHeaders(), HttpStatus.OK);
 
     }
 }

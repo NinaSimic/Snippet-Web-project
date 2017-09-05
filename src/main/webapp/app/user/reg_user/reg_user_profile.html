@@ -13,7 +13,7 @@
                 <div class="col-md-8 contact_right">
                     <form ng-submit="regUserCtrl.change()">
                         <center>
-                            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+                            <img src="{{regUserCtrl.userData.image}}" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
                             <div class="clearfix"> </div>
                             <div class="text">
                                 <div class="text-fild">
@@ -99,17 +99,17 @@
                                         <span class="bedrooms last">
                                             <strong>Description</strong>
                                             <a href="single.html">{{s.description}}</a>
-                                        </span>
-                                        <span class="area first"><strong>Programe language</strong><i></i>
-                                            {{s.language.name}}</span>
+                                        </span></br>
+                                        <span class="area first"><strong>Prog. language</strong><i></i>
+                                            {{s.language.name}}</span></br>
                                         <span class="bedrooms last"><strong>Exparation date</strong>
-                                            {{s.end_date | date : 'dd.MM.yyyy'}}</span>
+                                            {{s.end_date | date : 'dd.MM.yyyy'}}</span></br>
 
                                         <h4 class="m_1">{{s.state}}</h4>
 
                                             <div align = "Center">
-                                                <form ng-submit="getAllRealEstatesCtrl.redirect2(o.id)" >
-                                                    <label class="btn4 btn-82 btn-82c"><input type="submit" value="Edit"></label>
+                                                <form ng-submit="regUserCtrl.getDetails(s.id)" >
+                                                    <label class="btn4 btn-82 btn-82c"><input type="submit" value="Details"></label>
                                                 </form>
                                                 <form ng-submit="regUserCtrl.deleteSnippet(s.id)">
                                                     <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Delete"></label>

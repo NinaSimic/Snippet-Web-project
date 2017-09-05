@@ -55,12 +55,16 @@
                     <form>
                         <label ng-click="SingleSnippetAdminCtrl.redirect()" class="btn1 btn-8 btn-8c"><input type="submit" value="OK"></label>
                     </form>
-                    <div align = "Center" ng-if="SingleSnippetAdminCtrl.snippetData.state == 'APPROVED'">
+                    <div>
+
+                    </div>
+                    <div align = "Center" ng-if="SingleSnippetAdminCtrl.snippetData.state == 'APPROVED' && SingleSnippetAdminCtrl.mineSnippet == false">
                         <form ng-submit="SingleSnippetAdminCtrl.addComment(SingleSnippetAdminCtrl.snippetData.id)">
                             <label class="btn4 btn-82 btn-82c"  ><input  type="submit" value="Add comment"></label>
                         </form>
                     </div>
                 </div>
+
             </form>
         </div>
 
@@ -81,6 +85,14 @@
                 <div>
                     <div>
                         <form>
+                            <div class="text-fild" ng-if="c.user.username == null">
+                                <span ><span><img src="/user-images/no_image.png" style="height: 50px; width: 70px;"></img></span>Username: anonimus</span>
+                            </div>
+                            <div class="clearfix"> </div>
+                            <div class="text-fild" ng-if="c.user.username != null">
+                                <span><span><img src="{{c.user.image}}" style="height: 50px; width: 70px;"></span>Username: {{c.user.username}}</span>
+                            </div>
+                            <div class="clearfix"> </div>
                             <div class="text-fild">
                                 <span >Comment description:</span>
                             </div>

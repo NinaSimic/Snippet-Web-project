@@ -4,6 +4,7 @@ import snippet.web.project.model.enumerations.Role;
 import snippet.web.project.model.enumerations.UserStatus;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "user")
@@ -11,7 +12,7 @@ public class User {
 
   @Id
   @GeneratedValue
-  @Column(name = "ID")
+  @Column (name = "ID")
   private Long id;
 
   @Column(name = "username", nullable = false, unique = true)
@@ -47,14 +48,14 @@ public class User {
   @Column(name = "image")
   private String image;
 
-  @com.sun.istack.internal.NotNull
+  @NotNull
   @Enumerated(EnumType.STRING)
   private Role role;
 
   @ManyToOne
   private Authority authority;
 
-  @com.sun.istack.internal.NotNull
+  @NotNull
   @Enumerated(EnumType.STRING)
   private UserStatus status;
 

@@ -2,11 +2,12 @@
 (function() {
     angular.module("snippetApp").controller("RegUserController", regUserController);
 
-    function regUserController($http, $window, $scope, LoginFactory) {
+    function regUserController($http, $window, $scope, LoginFactory, $state, Upload) {
         var vm = this;
         vm.getAllMySnippets = getAllMySnippets;
         vm.deleteSnippet = deleteSnippet;
         vm.allMySnippets = [];
+        vm.uploadImage = uploadImage;
 
         getAllMySnippets();
 
@@ -17,13 +18,36 @@
 
 
         $scope.redirect = function(){
-            $window.location.href = "http://" + $window.location.host + "/#!/user_modify";
+            $window.location.href = "http://" + $window.location.host + "/#!/profile";
+        };
 
-        }
+        vm.getDetails = function (id) {
+            $state.go('single_snippet', {snippetID:id});
+        };
 
         vm.change = function () {
-            $scope.redirect();
-        }
+            $window.location.href = "http://" + $window.location.host + "/#!/user_modify";
+        };
+
+        function uploadImage () {
+
+            Upload.upload({
+                url: '/api/users/uploadImage',
+                data: {file: vm.file, 'id': $window.localStorage.getItem("id")}
+            }).then(function (response) {
+                // console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                alert(response.data.message);
+                vm.userData.image = response.data.message;
+                //vm.image = response.data;
+
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            });
+        };
+
 
         function getAllMySnippets() {
 
@@ -31,6 +55,10 @@
                 .then(function(response) {
                     console.log("All my snippets: " + JSON.stringify(response.data));
                     vm.allMySnippets = response.data;
+                    for(var i = 0; i < vm.allMySnippets.length; i++){
+                        vm.allMySnippets[i].end_date += vm.allMySnippets[i].creation_date;
+                        vm.allMySnippets[i].end_date = new Date(vm.allMySnippets[i].end_date);
+                    }
                 }, function(response) {
                     alert(JSON.stringify(response.data));
                 });
@@ -48,9 +76,8 @@
                 address: vm.userData.address,
                 anumber: vm.userData.anumber,
                 city: vm.userData.city,
-                country: vm.userData.country
-
-            }
+                country: vm.userData.country,
+            };
 
             $http.post('/api/users/reg_user/modify', vm.changed_user).then(function (response) {
 
@@ -61,7 +88,9 @@
                         console.log("ucitan u funkciji: " + JSON.stringify(loggedUser));
                         $window.localStorage['loggedUser'] = angular.toJson(loggedUser);
                         $scope.userData = loggedUser;
-                        $window.location.href = "#!/profile";
+                        $scope.redirect();
+
+                      //  $window.location.href = "#!/profile";
                     }
                 );
 
@@ -71,7 +100,7 @@
             });
 
 
-        }
+        };
 
         function deleteSnippet(id){
             if (confirm("Are you sure you want to erase this snippet: " + id + "?") == true) {

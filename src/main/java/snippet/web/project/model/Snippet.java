@@ -3,6 +3,7 @@ package snippet.web.project.model;
 import snippet.web.project.model.enumerations.SnippetState;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -29,8 +30,11 @@ public class Snippet {
     @Column(name = "url_reporsitory", nullable = false)
     private String url_reporsitory;
 
-    @Column(name = "end_date", nullable = false)
-    private Date end_date;
+    @Column(name = "end_date ", nullable = false)
+    private long end_date;
+
+    @Column(name = "creation_date", nullable = false)
+    private Date creation_date;
 
     @OneToMany(cascade = CascadeType.REMOVE)
     private List<Comment> comments;
@@ -39,19 +43,20 @@ public class Snippet {
     @JoinColumn(name = "user")
     private User user;
 
-    @com.sun.istack.internal.NotNull
+    @NotNull
     @Enumerated(EnumType.STRING)
     private SnippetState state;
 
     public Snippet() {
     }
 
-    public Snippet(String description, String clip, Language language, String url_reporsitory, Date end_date, List<Comment> comments, User user, SnippetState state) {
+    public Snippet(String description, String clip, Language language, String url_reporsitory, long end_date, Date creation_date, List<Comment> comments, User user, SnippetState state) {
         this.description = description;
         this.clip = clip;
         this.language = language;
         this.url_reporsitory = url_reporsitory;
         this.end_date = end_date;
+        this.creation_date = creation_date;
         this.comments = comments;
         this.user = user;
         this.state = state;
@@ -97,11 +102,11 @@ public class Snippet {
         this.url_reporsitory = url_reporsitory;
     }
 
-    public Date getEnd_date() {
+    public long getEnd_date() {
         return end_date;
     }
 
-    public void setEnd_date(Date end_date) {
+    public void setEnd_date(long end_date) {
         this.end_date = end_date;
     }
 
@@ -129,6 +134,14 @@ public class Snippet {
         this.state = state;
     }
 
+    public Date getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(Date creation_date) {
+        this.creation_date = creation_date;
+    }
+
     @Override
     public String toString() {
         return "Snippet{" +
@@ -138,9 +151,12 @@ public class Snippet {
                 ", language=" + language +
                 ", url_reporsitory='" + url_reporsitory + '\'' +
                 ", end_date=" + end_date +
+                ", creation_date=" + creation_date +
                 ", comments=" + comments +
                 ", user=" + user +
                 ", state=" + state +
                 '}';
     }
+
+
 }

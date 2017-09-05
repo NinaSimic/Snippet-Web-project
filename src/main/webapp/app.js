@@ -89,6 +89,9 @@
                             controllerAs: 'navbarCtrl'
                         }
                     }
+                    ,  params: {
+                        'snippetID': null
+                    }
                 })
                 .state('user_modify', {
                     url: '/user_modify',
@@ -118,6 +121,24 @@
                             controller: 'NavbarController',
                             controllerAs: 'navbarCtrl'
                         }
+                    }
+                })
+                .state('single_snippet', {
+                    url: '/single_snippet',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/snippet/single_snippet.html',
+                            controller: 'SingleSnippetController',
+                            controllerAs: 'singleSnippetCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar.html',
+                            controller: 'NavbarController',
+                            controllerAs: 'navbarCtrl'
+                        }
+                    }
+                    ,  params: {
+                        'snippetID': null
                     }
                 })
                 .state('add_comment', {
@@ -228,7 +249,24 @@
                         }
                     }
                 })
-
+                .state('add_comment_admin', {
+                    url: '/add_comment_admin',
+                    views: {
+                        'content': {
+                            templateUrl: 'app/comment/add_comment_admin.html',
+                            controller: 'AddCommentAdminController',
+                            controllerAs: 'AddCommentAdminCtrl'
+                        },
+                        'navbar': {
+                            templateUrl: 'app/navbar/navbar_admin.html',
+                            controller: 'NavbarAdminController',
+                            controllerAs: 'navbarAdminCtrl'
+                        }
+                    }
+                    ,  params: {
+                        'snippetID': null
+                    }
+                })
                 .state('upload_image', {
                     url: '/upload_image',
                     views: {
@@ -271,6 +309,7 @@
                         }
                     }
                 })
+
                 .state('single_snippet_admin', {
                     url: '/single_snippet_admin',
                     views: {
@@ -289,6 +328,7 @@
                         'snippetID': null
                     }
                 })
+
                 .state('get_all_snippets_notlogged', {
                     url: '/get_all_snippets_notlogged',
                     views: {

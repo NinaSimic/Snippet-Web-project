@@ -4,7 +4,7 @@
 
             <h1 class="blog_head" style="color: #F94B4B">Search snippets:</h1>
 
-            <div ng-submit="filterAdvertisementCtrl.setFilter()" >
+            <div  >
                 <div class="">
                     <div class="container">
                         <div class="col-md-12 dropdown-buttons">
@@ -19,16 +19,25 @@
                                     <select style="line-height: 44px; float:left;
   							border: 1px solid #DAD8D8;
   							width: 260px;" ng-model="allSnippetsNotloggedCtrl.filterConteiner.language" required>
-                                        <option style="color: #F94B4B;" ng-repeat="t in allSnippetsNotloggedCtrl.types" value="{{t.id}}">{{t.name}}</option>
+                                        <option style="color: #F94B4B;" ng-repeat="t in allSnippetsNotloggedCtrl.types" value="{{t.name}}">{{t.name}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-3" >
-                                <input type="date" style="width: 260px;" class="text" id="end_date" ng-model="allSnippetsNotloggedCtrl.filterConteiners.date" value="Enter date..." >
+                                <div class="text">
+                                    <div class="text-fild">
+
+                                        <select style="line-height: 44px; float:left;
+                                border: 1px solid #DAD8D8;
+                                width: 260px;" ng-model="allSnippetsNotloggedCtrl.filterConteiner.end_date" required>
+                                            <option style="color: #F94B4B;" ng-repeat="t in allSnippetsNotloggedCtrl.expirations" value="{{t.name}}">{{t.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-xs-2 submit_button">
-                                <form ng-submit="filterAdvertisementController.setFilter()" >
+                                <form ng-click="allSnippetsNotloggedCtrl.setFilter()" >
                                     <input type="submit" value="Search">
                                 </form>
                             </div>
@@ -63,18 +72,18 @@
 
                                         <span class="bedrooms last">
                                             <strong>Description</strong>
-                                            {{s.description}}
+                                            {{s.description}}</br>
                                         </span>
-                                <span class="area first"><strong>Programe language</strong><i></i>
-                                            {{s.language.name}}</span>
+                                <span class="area first"><strong>Prog. language</strong><i></i>
+                                            {{s.language.name}}</span></br>
                                 <span class="bedrooms last"><strong>Exparation date</strong>
                                             {{s.end_date | date : 'dd.MM.yyyy'}}</span>
 
                                 <h4 class="m_1">{{s.state}}</h4>
 
-                                <div align = "Center" ng-if="s.state == 'APPROVED'">
-                                    <form ng-submit="allSnippetsNotloggedCtrl.addComment(u.id)">
-                                        <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Add comment"></label>
+                                <div align = "Center">
+                                    <form ng-submit="allSnippetsNotloggedCtrl.getDetails(s.id)">
+                                        <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Details"></label>
                                     </form>
                                 </div>
 

@@ -50,7 +50,12 @@
 
 
         function login() {
-            console.log(vm.username+" and "+vm.password);
+
+            if(!$scope.loginForm.$valid){
+                alert("Enter both required fields correctly!");
+                return;
+            }
+       //     console.log(vm.username+" and "+vm.password);
             var userData =  { "username": vm.username, "password": vm.password };
 
             $http.post('/api/users/login', userData)
@@ -68,8 +73,8 @@
 
                //     $scope.redirect();
                 }, function(response) {
-                    alert(response.data.response);
-                    console.log("Wrong username and password combination");
+                    alert("Wrong username and password combination");
+                //    console.log("Wrong username and password combination");
                 });
         }
 

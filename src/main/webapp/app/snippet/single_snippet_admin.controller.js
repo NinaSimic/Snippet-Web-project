@@ -12,6 +12,7 @@
         vm.getSnippetData = getSnippetData;
         vm.snippetID = $stateParams.snippetID;
         vm.getAllComments = getAllComments;
+        vm.mineSnippet = false;
 
         console.log("primio snippetid " + vm.snippetID);
 
@@ -34,7 +35,7 @@
         vm.addComment = function (id) {
 
             //$window.location.href = "http://" + $window.location.host + "/#!/activateSednica";
-            $state.go('add_comment', {snippetID:id});
+            $state.go('add_comment_admin', {snippetID:id});
 
         }
 
@@ -88,6 +89,12 @@
                 .then(function(response) {
                     console.log("vm.snippetData = " + JSON.stringify(response.data));
                     vm.snippetData = response.data;
+                    if(vm.snippetData.user != null){
+                        if(vm.snippetData.user.username == vm.userData.username){
+                            vm.mineSnippet = true;
+                        }
+                    }
+
                 }, function(response) {
                     alert(JSON.stringify(response.data));
                 });

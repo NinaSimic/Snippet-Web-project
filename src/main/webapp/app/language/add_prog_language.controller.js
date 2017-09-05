@@ -13,7 +13,13 @@
 
 
         function createLanguage () {
-            console.log("USAO U KREIRANJE Jezika");
+
+            if(!$scope.languageForm.$valid){
+                alert("Enter name of programme language.");
+                return;
+            }
+
+     //       console.log("USAO U KREIRANJE Jezika");
             vm.new_language = {
                 name : vm.newLanguage.name,
             }

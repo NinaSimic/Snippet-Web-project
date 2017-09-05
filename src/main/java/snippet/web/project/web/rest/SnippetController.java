@@ -17,6 +17,7 @@ import snippet.web.project.util.ResponseMessage;
 import snippet.web.project.web.rest.dto.CreateSnippetDTO;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -58,6 +59,7 @@ public class SnippetController {
             // IZMENITI!!!! Pitati sta predstavlja taj url
             snippet.setUrl_reporsitory(createSnippetDTO.getUrl());
             snippet.setEnd_date(createSnippetDTO.getEnd_date());
+            snippet.setCreation_date(new Date());
             snippet.setState(SnippetState.APPROVED);
             snippet.setUser(userService.findByUsername(username));
 
@@ -104,6 +106,8 @@ public class SnippetController {
     public ResponseEntity getSnippetData(@PathVariable Long id) {
 
         Snippet snippet = snippetService.findById(id);
+        User user = snippet.getUser();
+        System.out.println("user u get snippet data "+ user);
 
         return new ResponseEntity<>(snippet, HttpStatus.OK);
 

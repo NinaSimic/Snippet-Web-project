@@ -8,7 +8,9 @@ import snippet.web.project.model.Comment;
 import snippet.web.project.model.Snippet;
 import snippet.web.project.model.User;
 import snippet.web.project.model.enumerations.UserStatus;
+import snippet.web.project.repositories.CommentRepository;
 import snippet.web.project.service.CommentService;
+import snippet.web.project.service.GradeService;
 import snippet.web.project.service.SnippetService;
 import snippet.web.project.service.UserService;
 import snippet.web.project.util.ResponseMessage;
@@ -30,6 +32,10 @@ public class CommentContoller {
 
     @Autowired
     private SnippetService snippetService;
+
+    @Autowired
+    private CommentRepository commentRepository;
+
 
     @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity createNewComment(@RequestBody CreateCommentDTO createCommentDTO) {
@@ -53,11 +59,14 @@ public class CommentContoller {
             comment.setDate(new Date());
             comment.setUser(userService.findByUsername(username));
 
-            Snippet snippet = snippetService.findById(snippetID);
-            List<Comment> comments = snippet.getComments();
+            ////////////////////////////////////////////////////////////
+            Snippet snippet = snippetService.findById(snippetID); // <-----
+            List<Comment> comments = commentRepository.findBySnippet(snippet); // <-----
             comments.add(comment);
             snippet.setComments(comments);
 
+            comment.setSnippet(snippet);  // <-----
+            //////////////////////////////////////////////////////////////
             commentService.save(comment);
             snippetService.save(snippet);
 
@@ -75,6 +84,29 @@ public class CommentContoller {
         List<Comment> snippetComments = snippet.getComments();
 
         return new ResponseEntity<>(snippetComments, HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public ResponseEntity delete(@PathVariable Long id, @RequestHeader("X-Auth-Token") String token)
+    {
+
+        User user = userService.findByToken(token);
+
+        Comment c = commentService.findById(id);
+
+        Snippet snippet = c.getSnippet();
+
+        if (c.getUser().getId() == user.getId()){
+
+            snippet.getComments().remove(c);
+
+            commentService.delete(c);
+
+            //treba obrisati i sve one iste!!!!
+            return new ResponseEntity<>(c, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new ResponseMessage("You are not allowed to delete comment!"), HttpStatus.BAD_REQUEST);
 
     }
 

@@ -20,7 +20,13 @@
 
         //method for user registration
         function register () {
-            console.log("USAO U REGISTER FUNKCIJU");
+
+            if(!$scope.registerForm.$valid){
+                alert("All fields are required! Make sure you filled them correctly.");
+                return;
+            }
+
+       //     console.log("USAO U REGISTER FUNKCIJU");
             vm.new_user = {
                 username: vm.newUser.username,
                 password: vm.newUser.password,
@@ -35,14 +41,14 @@
             }
 
 
-            console.log("novi korisnik: " + JSON.stringify(vm.newUser))
+         //   console.log("novi korisnik: " + JSON.stringify(vm.newUser))
             checkRepeatedPassword(vm.newUser.password, vm.newUser.repeatpass)
 
             RegisterService.register(vm.new_user).then(function (response) {
                 $window.localStorage.setItem("id", response.data.id);
                 $scope.redirect();
             }, function (response) {
-                alert(response.data);
+                alert("That username already exist! Please choose other.");
             });
 
 

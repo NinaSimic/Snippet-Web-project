@@ -1,0 +1,31 @@
+<div class="about_top">
+    <div class="container">
+        <div class="about">
+            <div class="contact" ng-submit="AddCommentAdminCtrl.createComment()">
+                <div>            <h1 class="blog_head" style="color: #F94B4B">Add comment</h1>
+
+                    <div>
+                        <form name="commentForm">
+                            <div class="message-fild">
+                                <span >Description:</span>
+                                <textarea ng-model="AddCommentAdminCtrl.newComment.description" required style="height: 300px;"> </textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </br>
+                <div class="clearfix"> </div>
+                <div class="col-md-3 contact_left">
+                </div>
+                <div class="col-md-6 contact_right">
+                    <form>
+                        <div align = "Center">
+                            <label class="btn1 btn-8 btn-8c"><input type="submit" value="Save"></label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

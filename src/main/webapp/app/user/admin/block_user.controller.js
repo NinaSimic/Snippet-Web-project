@@ -6,6 +6,31 @@
         var vm = this;
         vm.getAllUsers = getAllUsers;
 
+        vm.filterConteiner = {
+            username: null
+        };
+
+        vm.setFilter = function () {
+            var filtered_users = [];
+
+            for (var i = 0; i < vm.backupUsers.length; i++) {
+                var found = false;
+                if (vm.filterConteiner.username !== null && vm.filterConteiner.username !== "") {
+                    var username = vm.filterConteiner.username.split(" ");
+                    for (var j = 0; j < username.length; j++) {
+                        if (vm.backupUsers[i].username.indexOf(username[i]) !== -1) {
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        continue;
+                    }
+                }
+                filtered_users.push(vm.backupUsers[i]);
+            }
+            vm.allUsers = filtered_users;
+        };
+
         getAllUsers();
 
         function getAllUsers() {
@@ -14,6 +39,7 @@
                 .then(function(response) {
                     console.log("All users: " + JSON.stringify(response.data));
                     vm.allUsers = response.data;
+                    vm.backupUsers = response.data;
                 }, function(response) {
                     alert(JSON.stringify(response.data));
                 });

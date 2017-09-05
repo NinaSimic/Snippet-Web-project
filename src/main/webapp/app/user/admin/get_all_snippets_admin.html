@@ -39,16 +39,24 @@
 
                                         <h4 class="m_1">{{u.state}}</h4>
 
+                                        <div align = "Center">
+                                            <form ng-submit="AllSnippetsAdminCtrl.getDetails(u.id)">
+                                                <label class="btn4 btn-82 btn-82c"  ><input  type="submit" value="Details"></label>
+                                            </form>
+                                        </div>
+
                                         <div ng-if="u.state == 'BLOCKED'">
                                             <form ng-submit="AllSnippetsAdminCtrl.approve(u.id)">
                                                 <label class="btn4 btn-82 btn-82c" ><input type="submit" value="Approve"></label>
                                             </form>
                                         </div>
+
                                         <div align = "Center" ng-if="u.state == 'APPROVED'">
                                             <form ng-submit="AllSnippetsAdminCtrl.block(u.id)">
                                                 <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Block"></label>
                                             </form>
                                         </div>
+
                             </li>
 
                             <div class="clearfix"></div>
