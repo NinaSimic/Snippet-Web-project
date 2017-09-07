@@ -18,7 +18,7 @@
                 if (vm.filterConteiner.username !== null && vm.filterConteiner.username !== "") {
                     var username = vm.filterConteiner.username.split(" ");
                     for (var j = 0; j < username.length; j++) {
-                        if (vm.backupUsers[i].username.indexOf(username[i]) !== -1) {
+                        if (vm.backupUsers[i].username.indexOf(username[j]) !== -1) {
                             found = true;
                         }
                     }

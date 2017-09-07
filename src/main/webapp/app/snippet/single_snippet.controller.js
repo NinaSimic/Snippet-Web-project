@@ -132,7 +132,8 @@
                         vm.snippetData[i].end_date += vm.snippetData[i].creation_date.getTime();
                     }*/
 
-                    if(vm.snippetData.user != null){
+                    if(vm.snippetData.user != null && vm.userData === undefined){
+
                         if(vm.snippetData.user.username == vm.userData.username){
                             vm.mineSnippet = true;
                         }

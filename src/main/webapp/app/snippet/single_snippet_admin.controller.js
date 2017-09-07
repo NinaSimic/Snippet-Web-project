@@ -12,6 +12,9 @@
         vm.getSnippetData = getSnippetData;
         vm.snippetID = $stateParams.snippetID;
         vm.getAllComments = getAllComments;
+        vm.deleteComment = deleteComment;
+        vm.addPossitiveGrade = addPossitiveGrade;
+        vm.addNegativeGrade = addNegativeGrade;
         vm.mineSnippet = false;
 
         console.log("primio snippetid " + vm.snippetID);
@@ -83,6 +86,19 @@
                 });
         }
 
+        function deleteComment(id){
+            if (confirm("Are you sure you want to erase this comment: " + id + "?") == true) {
+
+                $http.get('/api/comment/delete/'+ id)
+                    .then(function(response) {
+
+                        getAllComments();
+                    }, function(response) {
+                        alert(JSON.stringify(response.data));
+                    });
+            }
+        }
+
         function getSnippetData() {
 
             $http.get('/api/snippet/get_snippet_data/' + vm.snippetID)
@@ -98,6 +114,47 @@
                 }, function(response) {
                     alert(JSON.stringify(response.data));
                 });
+        }
+
+        function addPossitiveGrade(id){
+
+            vm.new_grade = {
+                positive : true,
+                username : vm.userData.username,
+                commentID : id
+            }
+
+            console.log("username " + vm.userData.username);
+            console.log("commentID " + id);
+
+            $http.post('/api/grade/create', vm.new_grade).then(function (response) {
+
+              //  $scope.redirect();
+
+            },function(response){
+                alert("Something went wrong! Try again.");
+            });
+        }
+
+        function addNegativeGrade(id){
+
+            vm.new_grade = {
+                positive : false,
+                username : vm.userData.username,
+                commentID : id
+            }
+
+            console.log("username " + vm.userData.username);
+            console.log("commentID " + id);
+
+            $http.post('/api/grade/create', vm.new_grade).then(function (response) {
+
+                //  $scope.redirect();
+
+            },function(response){
+                alert("Something went wrong! Try again.");
+            });
+
         }
     }
 })();

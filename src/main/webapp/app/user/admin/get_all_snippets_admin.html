@@ -6,14 +6,54 @@
 
             </div>
             <div class="col-md-8 contact_right">
-            <div class="text-fild" align="Center">
-                <span for="phone">If you block snippet users will not be able to comment on it any more!</span>
-
-            </div>
+                <div class="text-fild" align="Center">
+                    <span for="phone">If you block snippet users will not be able to comment on it any more!</span>
+                </div>
             </div>
             </br>
+            <div class="clearfix"></div>
+            </br>
+            </br>
+            <div class="container">
+                <div class="col-md-12 dropdown-buttons">
+                    <div class="col-md-4" >
+                        <div  class="text-fild" style="width: 355px;">
+                            <input  type="text" class="text" ng-model="AllSnippetsAdminCtrl.filterConteiner.description" placeholder="Enter description">
+                        </div>
+                    </div>
+                    <div class="col-md-3" >
+                        <div class="text-fild">
 
-                <div class="contact">
+                            <select style="line-height: 44px; float:left;
+  							border: 1px solid #DAD8D8;
+  							width: 260px;" ng-model="AllSnippetsAdminCtrl.filterConteiner.language" required>
+                                <option style="color: #F94B4B;" ng-repeat="t in AllSnippetsAdminCtrl.types" value="{{t.name}}">{{t.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3" >
+                        <div class="text">
+                            <div class="text-fild">
+
+                                <select style="line-height: 44px; float:left;
+                                border: 1px solid #DAD8D8;
+                                width: 260px;" ng-model="AllSnippetsAdminCtrl.filterConteiner.end_date" required>
+                                    <option style="color: #F94B4B;" ng-repeat="t in AllSnippetsAdminCtrl.expirations" value="{{t.name}}">{{t.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-2 submit_button">
+                        <form ng-click="AllSnippetsAdminCtrl.setFilter()" >
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="contact">
 
 
                 <div class="col-md-2 contact_left">
@@ -31,11 +71,11 @@
                                         <span class="bedrooms last">
                                             <strong>Description</strong>
                                             <a href="single.html">{{u.description}}</a>
-                                        </span>
-                                        <span class="area first"><strong>Programme language</strong><i></i>
-                                            {{u.language.name}}</span>
+                                        </span></br>
+                                        <span class="area first"><strong>Prog. language</strong><i></i>
+                                            {{u.language.name}}</span></br>
                                         <span class="bedrooms last"><strong>Exparation date</strong>
-                                            {{u.end_date}}</span>
+                                            {{u.end_date | date: 'dd.MM.yyyy'}}</span></br>
 
                                         <h4 class="m_1">{{u.state}}</h4>
 
@@ -54,6 +94,11 @@
                                         <div align = "Center" ng-if="u.state == 'APPROVED'">
                                             <form ng-submit="AllSnippetsAdminCtrl.block(u.id)">
                                                 <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Block"></label>
+                                            </form>
+                                        </div>
+                                        <div align = "Center">
+                                            <form ng-submit="AllSnippetsAdminCtrl.deleteSnippet(u.id)">
+                                                <label class="btn4 btn-82 btn-82c"  ><input  type="submit" value="Delete"></label>
                                             </form>
                                         </div>
 

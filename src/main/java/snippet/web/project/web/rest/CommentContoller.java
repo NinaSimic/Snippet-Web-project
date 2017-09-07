@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import snippet.web.project.model.Comment;
 import snippet.web.project.model.Snippet;
 import snippet.web.project.model.User;
+import snippet.web.project.model.enumerations.Role;
 import snippet.web.project.model.enumerations.UserStatus;
 import snippet.web.project.repositories.CommentRepository;
 import snippet.web.project.service.CommentService;
@@ -97,15 +98,32 @@ public class CommentContoller {
 
         Snippet snippet = c.getSnippet();
 
-        if (c.getUser().getId() == user.getId()){
+        if(user.getRole().equals(Role.ADMIN)){
 
             snippet.getComments().remove(c);
 
             commentService.delete(c);
 
-            //treba obrisati i sve one iste!!!!
             return new ResponseEntity<>(c, HttpStatus.OK);
+
+
         }
+        else if(user.getRole().equals(Role.USER)){
+
+            if(c.getUser().getId() != null){
+                if (c.getUser().getId() == user.getId()){
+
+                    snippet.getComments().remove(c);
+
+                    commentService.delete(c);
+
+                    return new ResponseEntity<>(c, HttpStatus.OK);
+                }
+
+
+            }
+        }
+
         return new ResponseEntity<>(new ResponseMessage("You are not allowed to delete comment!"), HttpStatus.BAD_REQUEST);
 
     }

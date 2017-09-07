@@ -109,7 +109,7 @@
 
                                 <textarea ng-model="c.description" style="height: 200px;width: 1120px;" disabled> </textarea>
                             </div>
-                            <div align = "Center" ng-if="c.user.username == singleSnippetCtrl.userData.username">
+                            <div align = "Center" ng-if="c.user.username == singleSnippetCtrl.userData.username && c.user.username != null ">
                                 <div class="col-md-1 contact_right"  >
                                     <form>
                                         <label ng-click="singleSnippetCtrl.deleteComment(c.id)" class="btn1 btn-8 btn-8c"><input type="submit" value="Remove comment"></label>

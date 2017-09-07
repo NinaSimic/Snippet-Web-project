@@ -79,13 +79,23 @@ public class SnippetController {
             return new ResponseEntity<>(new ResponseMessage("You are not allowed to delete snippet!"), HttpStatus.BAD_REQUEST);
         }*/
         Snippet s = snippetService.findById(id);
-        if (s.getUser().getId() == user.getId()){
 
-         //   verifierReportService.deleteReportsOfAdvertisement(a);
+        if(user.getRole().equals(Role.ADMIN)){
             snippetService.delete(s);
 
             //treba obrisati i sve one iste!!!!
             return new ResponseEntity<>(s, HttpStatus.OK);
+        }
+        else if(user.getRole().equals(Role.USER)){
+
+            if(s.getUser().getId() == user.getId()){
+
+                //   verifierReportService.deleteReportsOfAdvertisement(a);
+                snippetService.delete(s);
+
+                //treba obrisati i sve one iste!!!!
+                return new ResponseEntity<>(s, HttpStatus.OK);
+                }
         }
         return new ResponseEntity<>(new ResponseMessage("You are not allowed to delete advertisement!"), HttpStatus.BAD_REQUEST);
 

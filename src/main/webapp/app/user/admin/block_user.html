@@ -13,19 +13,22 @@
 
                     <div class="tab-1">
 
-                        <div class="tab-1">
-                            <div class="col-md-4" >
-                                <div  class="text-fild" style="width: 355px;">
+                        <div class="">
+                            <div class="col-md-2" >
+                                <div  class="text-fild" style="width: 320px;">
                                     <input  type="text" class="text" ng-model="blockUserCtrl.filterConteiner.username" placeholder="Search by username...">
                                 </div>
                             </div>
+                            <div class="clearfix"></div></br>
+                            <div class="col-md-4" >
                             <div align = "Center">
                                 <form ng-submit="blockUserCtrl.setFilter()">
                                     <label class="btn1 btn-8 btn-8c"  ><input  type="submit" value="Search"></label>
                                 </form>
                             </div>
+                            </div>
 
-                            <div class="clearfix"></div></br>
+                            <div class="clearfix"></div></br></br>
 
                             <div  ng-repeat="u in blockUserCtrl.allUsers">
 

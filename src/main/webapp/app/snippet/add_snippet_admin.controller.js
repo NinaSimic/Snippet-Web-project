@@ -29,6 +29,8 @@
 
         };
 
+        vm.todaysDate = new Date();
+
         $scope.aceLoaded = function(_editor) {
             // Options
             vm.ace = _editor;
@@ -46,6 +48,7 @@
 
             }
             $scope.mode = $scope.modes[0];
+            vm.newSnippet.language = vm.types[0].name;
             console.log("imena jezika: " , $scope.mode );
 
             $scope.aceOption = {
@@ -87,12 +90,19 @@
                 return;
             }
 
+            // find language because it expects id not name
+            for(var i = 0; i < vm.types.length; i++){
+                if(vm.types[i].name === vm.newSnippet.language){
+                    vm.newSnippet.language = vm.types[i].id;
+                }
+            }
+
             vm.new_snippet = {
                 description : vm.newSnippet.description,
                 clip : vm.ace.getValue(),
                 language: vm.newSnippet.language,
                 url: vm.newSnippet.url,
-                end_date : vm.newSnippet.end_date,
+                end_date : -1,
                 username : vm.username
 
             }
@@ -102,7 +112,7 @@
                 $scope.redirect();
 
             },function(response){
-                alert("You are blocked and unable to proceed this function!");
+                alert("Something went wrong! Try again.");
             });
 
 
