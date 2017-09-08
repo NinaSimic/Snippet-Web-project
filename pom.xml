@@ -7,11 +7,11 @@
 	<artifactId>snippet-web-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<!-- Uncomment if you want to run as jar -->
-	<packaging>war</packaging>
+	<!-- Uncomment if you want to run as jar
+	<packaging>jar</packaging> -->
 
-	<!-- Comment if you want to run as jar
-	<packaging>war</packaging> -->
+	<!-- Comment if you want to run as war -->
+	<packaging>war</packaging>
 
 	<name>snippet-web-project</name>
 	<description>Demo project for Spring Boot with JPA and persisting H2 database</description>
@@ -42,12 +42,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-	<!-- Comment if you want to run as jar -->
+	<!-- un Comment if you want to run as jar
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 
 
 		<dependency>
@@ -85,6 +85,8 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!--
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -96,6 +98,7 @@
 			<artifactId>spring-security-core</artifactId>
 			<version>4.2.3.RELEASE</version>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
