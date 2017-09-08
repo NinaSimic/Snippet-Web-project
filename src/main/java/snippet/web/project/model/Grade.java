@@ -1,6 +1,8 @@
 package snippet.web.project.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +22,7 @@ public class Grade {
     private User user;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "comment", nullable = false)
     private Comment comment;
 

@@ -1,0 +1,6 @@
+#FileLock
+#Mon Sep 04 12:52:49 CEST 2017
+hostName=192.168.0.15
+id=15e4c856fae163d9fee3ce605bac293d4479f0370f3
+method=file
+server=192.168.0.15\:60029
