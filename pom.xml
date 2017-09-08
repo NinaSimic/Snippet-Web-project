@@ -7,11 +7,11 @@
 	<artifactId>snippet-web-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<!-- Uncomment if you want to run as jar-->
-	<packaging>jar</packaging>
+	<!-- Uncomment if you want to run as jar -->
+	<packaging>war</packaging>
 
 	<!-- Comment if you want to run as jar
-	<packaging>war</packaging>-->
+	<packaging>war</packaging> -->
 
 	<name>snippet-web-project</name>
 	<description>Demo project for Spring Boot with JPA and persisting H2 database</description>
@@ -42,13 +42,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-	<!-- Comment if you want to run as jar
+	<!-- Comment if you want to run as jar -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
--->
+
 
 		<dependency>
 			<groupId>mysql</groupId>
