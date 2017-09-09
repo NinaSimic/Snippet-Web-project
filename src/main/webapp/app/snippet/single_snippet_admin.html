@@ -81,6 +81,15 @@
 
         <div class="col-md-8 contact_right">
 
+            <div align = "Center">
+                <div class="col-md-1 contact_right">
+                    <form ng-submit="SingleSnippetAdminCtrl.sortComments()">
+                        <label class="btn1 btn-8 btn-8c" >
+                            <input style="align-content: center"  type="submit" value="{{SingleSnippetAdminCtrl.sortMode}}"></label>
+                    </form>
+                </div>
+            </div>
+
             <div  ng-repeat="c in SingleSnippetAdminCtrl.allComments">
                 <div>
                     <div>
@@ -122,7 +131,7 @@
                             </div>
                             </br>
                             <div class="clearfix"> </div>
-                            <div align = "Center">
+                            <div align = "Center" ng-if="!c.isOwner && !c.alreadyGraded">
                                     <div class="col-md-1 contact_right">
                                         <form ng-submit="SingleSnippetAdminCtrl.addPossitiveGrade(c.id)" >
                                             <label class="btn4 btn-82 btn-82c"><input type="submit" value="+"></label>
@@ -130,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="clearfix"> </div>
-                            <div class="text-fild">
+                            <div class="text-fild" >
                                 </br>
                                 <div class="col-md-5 contact_right">
                                 <span for="password">Negative grades:  {{c.number_negative}}</span>
@@ -139,13 +148,15 @@
                             <div class="clearfix"> </div>
                             <div align = "Center">
 
-                                <div class="col-md-1 contact_right">
+                                <div class="col-md-1 contact_right" ng-if="!c.isOwner && !c.alreadyGraded">
                                     <form ng-submit="SingleSnippetAdminCtrl.addNegativeGrade(c.id)">
                                         <label class="btn1 btn-8 btn-8c" ><input style="align-content: center"  type="submit" value="-"></label>
                                     </form>
                                 </div>
                             </div>
                             <div class="clearfix"> </div>
+
+
                         </form>
                     </div>
 

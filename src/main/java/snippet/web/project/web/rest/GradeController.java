@@ -54,12 +54,6 @@ public class GradeController {
         System.out.println("setovao oceni coment na " + grade.getComment());
 
         Comment comment = commentService.findById(commentID);
-        System.out.println("Nasao komentar " + comment.toString());
-        List<Grade> grades = gradeRepository.findByComment(comment);
-        System.out.println("Lista ocena komentara " + grades);
-        grades.add(grade);
-        System.out.println("dodao u listu");
-        comment.setGrades(grades);
 
         if(grade.isPositive() == true){
             int num_positive = comment.getNumber_positive();
@@ -67,9 +61,9 @@ public class GradeController {
             comment.setNumber_positive(num_positive);
         }
         else if(grade.isPositive() == false){
-            int num_negative = comment.getNumber_positive();
+            int num_negative = comment.getNumber_negative();
             num_negative++;
-            comment.setNumber_positive(num_negative);
+            comment.setNumber_negative(num_negative);
         }
 
         grade.setComment(comment);

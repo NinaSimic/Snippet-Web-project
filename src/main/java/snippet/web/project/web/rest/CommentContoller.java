@@ -10,6 +10,7 @@ import snippet.web.project.model.User;
 import snippet.web.project.model.enumerations.Role;
 import snippet.web.project.model.enumerations.UserStatus;
 import snippet.web.project.repositories.CommentRepository;
+import snippet.web.project.repositories.GradeRepository;
 import snippet.web.project.service.CommentService;
 import snippet.web.project.service.GradeService;
 import snippet.web.project.service.SnippetService;
@@ -36,6 +37,9 @@ public class CommentContoller {
 
     @Autowired
     private CommentRepository commentRepository;
+
+    @Autowired
+    private GradeRepository gradeRepository;
 
 
     @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "application/json")
@@ -90,6 +94,11 @@ public class CommentContoller {
 
 
         List<Comment> snippetComments = snippet.getComments();
+        for(Comment comment : snippetComments) {
+            comment.setGrades(gradeRepository.findByComment(comment));
+        }
+
+
 
         return new ResponseEntity<>(snippetComments, HttpStatus.OK);
 

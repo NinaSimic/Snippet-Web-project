@@ -73,7 +73,6 @@ public class Grade {
                 "id=" + id +
                 ", positive=" + positive +
                 ", user=" + user +
-                ", comment=" + comment +
                 '}';
     }
 }

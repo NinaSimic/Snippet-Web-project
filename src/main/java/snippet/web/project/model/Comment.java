@@ -123,10 +123,8 @@ public class Comment {
                 ", description='" + description + '\'' +
                 ", date=" + date +
                 ", user=" + user +
-                ", grades=" + grades +
                 ", number_positive=" + number_positive +
                 ", number_negative=" + number_negative +
-                ", snippet=" + snippet +
                 '}';
     }
 

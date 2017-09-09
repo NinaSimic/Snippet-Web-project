@@ -77,6 +77,15 @@
 
         <div class="col-md-8 contact_right">
 
+            <div align = "Center">
+                <div class="col-md-1 contact_right">
+                    <form ng-submit="singleSnippetCtrl.sortComments()">
+                        <label class="btn1 btn-8 btn-8c" >
+                            <input style="align-content: center"  type="submit" value="{{singleSnippetCtrl.sortMode}}"></label>
+                    </form>
+                </div>
+            </div>
+
             <div  ng-repeat="c in singleSnippetCtrl.allComments">
                 <div>
                     <div>
@@ -129,16 +138,14 @@
                             </br>
                             <div class="clearfix"> </div>
 
-
-
-
-                            <div align = "Center" ng-if="singleSnippetCtrl.userData.username !== undefined">
-                                <div class="col-md-1 contact_right"  >
-                                    <form ng-submit="adminCtrl.deleteSnippet(s.id)" >
+                            <div align = "Center" ng-if="c.isOwner === 0 && c.alreadyGraded === 0">
+                                <div class="col-md-1 contact_right">
+                                    <form ng-submit="singleSnippetCtrl.addPossitiveGrade(c.id)" >
                                         <label class="btn4 btn-82 btn-82c"><input type="submit" value="+"></label>
                                     </form>
                                 </div>
                             </div>
+
                             <div class="clearfix"> </div>
                             <div class="text-fild">
                                 </br>
@@ -147,13 +154,22 @@
                                 </div>
                             </div>
                             <div class="clearfix"> </div>
-                            <div align = "Center" ng-if="singleSnippetCtrl.userData.username !== undefined">
+
+                            <div align = "Center" ng-if="c.isOwner === 0 && c.alreadyGraded === 0" >
+
                                 <div class="col-md-1 contact_right">
-                                    <form ng-submit="adminCtrl.deleteSnippet(s.id)">
+                                    <form ng-submit="singleSnippetCtrl.addNegativeGrade(c.id)">
                                         <label class="btn1 btn-8 btn-8c" ><input style="align-content: center"  type="submit" value="-"></label>
                                     </form>
                                 </div>
                             </div>
+
+
+                            <div class="clearfix"> </div>
+
+
+
+
                             <div class="clearfix"> </div>
                         </form>
                     </div>
