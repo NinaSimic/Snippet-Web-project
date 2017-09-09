@@ -7,8 +7,8 @@
 	<artifactId>snippet-web-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<!-- Uncomment if you want to run as jar
-	<packaging>war</packaging> -->
+	<!-- Uncomment if you want to run as jar  -->
+	<packaging>war</packaging>
 
 	<!-- Comment if you want to run as war -->
 	<!--<packaging>jar</packaging>-->
