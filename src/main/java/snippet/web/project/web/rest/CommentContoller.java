@@ -82,6 +82,13 @@ public class CommentContoller {
         System.out.println("stigao u get all comments id snippeta " + id);
 
         Snippet snippet = snippetService.findById(id);
+
+        if(snippet == null) {
+            return new ResponseEntity<>(new ResponseMessage("Snippet with id " + id  + " was not found!"), HttpStatus.NOT_FOUND);
+        }
+
+
+
         List<Comment> snippetComments = snippet.getComments();
 
         return new ResponseEntity<>(snippetComments, HttpStatus.OK);
@@ -94,7 +101,15 @@ public class CommentContoller {
 
         User user = userService.findByToken(token);
 
+        if(user == null) {
+            return new ResponseEntity<>(new ResponseMessage("Un-registered users cannot delete comments"), HttpStatus.FORBIDDEN);
+        }
+
+
         Comment c = commentService.findById(id);
+        if(c == null) {
+            return new ResponseEntity<>(new ResponseMessage("Comment with id " + id  + " was not found!"), HttpStatus.NOT_FOUND);
+        }
 
         Snippet snippet = c.getSnippet();
 

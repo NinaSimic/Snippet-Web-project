@@ -11,7 +11,7 @@
 	<packaging>jar</packaging> -->
 
 	<!-- Comment if you want to run as war -->
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>snippet-web-project</name>
 	<description>Demo project for Spring Boot with JPA and persisting H2 database</description>
@@ -42,7 +42,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-	<!-- un Comment if you want to run as jar
+	<!-- Comment if you want to run as jar
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>

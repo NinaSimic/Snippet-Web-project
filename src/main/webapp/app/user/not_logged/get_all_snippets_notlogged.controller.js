@@ -54,17 +54,21 @@
                     var duration = -1;
 
                     for(var j = 0; j < vm.expirations.length; j++){
-                        if(vm.filterConteiner.end_date === vm.expirations[i].name){
-                            duration = vm.expirations[i].duration;
+                        if(vm.filterConteiner.end_date === vm.expirations[j].name){
+                            duration = vm.expirations[j].duration;
                         }
                     }
 
                     var currentPlusSelected = Date.now() + duration; // sada + 2 minuta
-                    var endDate = vm.backupSnippets[i].creation_date + vm.backupSnippets[i].end_date;
+                    // var endDate = vm.backupSnippets[i].creation_date + vm.backupSnippets[i].end_date;
+                    var endDate =  vm.backupSnippets[i].end_date;
 
-                    if (endDate <= currentPlusSelected) {
+                    if (endDate === -1 && vm.filterConteiner.end_date !== "ALL" && vm.filterConteiner.end_date !== "NEVER" ) {
+                        continue; // not found...
+                    } else if (endDate <= currentPlusSelected) {
                         found = true;
                     }
+
 
                     if (!found) {
                         continue;
@@ -101,8 +105,11 @@
                 .then(function (response) {
                     vm.allSnippets = response.data;
                     for(var i = 0; i < vm.allSnippets.length; i++){
+                        if(vm.allSnippets[i].end_date == -1) {
+                            continue;
+                        }
                         vm.allSnippets[i].end_date += vm.allSnippets[i].creation_date;
-                        vm.allSnippets[i].end_date = new Date(vm.allSnippets[i].end_date);
+                        //vm.allSnippets[i].end_date = new Date(vm.allSnippets[i].end_date);
                     }
                     vm.backupSnippets = response.data;
                 }, function (response) {

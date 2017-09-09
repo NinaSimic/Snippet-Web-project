@@ -16,7 +16,7 @@
 
                                 <select style="line-height: 44px; float:left;
   							border: 1px solid #DAD8D8;
-  							width: 260px;" ng-model="allSnippetsNotloggedCtrl.filterConteiner.language" required>
+  							width: 260px;" ng-model="allSnippetsUserCtrl.filterConteiner.language" required>
                                     <option style="color: #F94B4B;" ng-repeat="t in allSnippetsUserCtrl.types" value="{{t.name}}">{{t.name}}</option>
                                 </select>
                             </div>
@@ -27,7 +27,7 @@
 
                                     <select style="line-height: 44px; float:left;
                                 border: 1px solid #DAD8D8;
-                                width: 260px;" ng-model="allSnippetsNotloggedCtrl.filterConteiner.end_date" required>
+                                width: 260px;" ng-model="allSnippetsUserCtrl.filterConteiner.end_date" required>
                                         <option style="color: #F94B4B;" ng-repeat="t in allSnippetsUserCtrl.expirations" value="{{t.name}}">{{t.name}}</option>
                                     </select>
                                 </div>

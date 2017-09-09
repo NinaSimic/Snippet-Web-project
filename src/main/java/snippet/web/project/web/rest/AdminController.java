@@ -77,7 +77,7 @@ public class AdminController {
             return new ResponseEntity<>(mySnippets, HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(new ResponseMessage("Loged user is not registrated user!"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseMessage("Loged user is not registrated user!"), HttpStatus.FORBIDDEN);
     }
 
 
@@ -98,7 +98,7 @@ public class AdminController {
             return new ResponseEntity<>(users, HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/block_user/{username}", method = RequestMethod.GET)
@@ -115,7 +115,7 @@ public class AdminController {
             return new ResponseEntity<>(block, HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/unblock_user/{username}", method = RequestMethod.GET)
@@ -132,7 +132,7 @@ public class AdminController {
             return new ResponseEntity<>(block, HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/getAllSnippets", method = RequestMethod.GET)
@@ -150,7 +150,7 @@ public class AdminController {
 
             return new ResponseEntity<>(snippets, HttpStatus.OK);
         }
-        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/block_snippet/{id}", method = RequestMethod.GET)
@@ -167,7 +167,7 @@ public class AdminController {
             return new ResponseEntity<>(block, HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/unblock_snippet/{id}", method = RequestMethod.GET)
@@ -184,6 +184,6 @@ public class AdminController {
             return new ResponseEntity<>(block, HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseMessage("Loged user is not admin!"), HttpStatus.FORBIDDEN);
     }
 }
