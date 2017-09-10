@@ -160,7 +160,7 @@
 
                 $http.get('/api/snippet/delete/'+ id)
                     .then(function(response) {
-                        getAllMySnippets();
+                        getAllSnippets();
                         $scope.redirect();
                     }, function(response) {
                         alert(JSON.stringify(response.data));

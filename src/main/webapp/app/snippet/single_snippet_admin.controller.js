@@ -102,7 +102,7 @@
                          // CHECK if he graded that comment before, go through all grades and see if our user is in there
                     for(var i = 0; i < vm.allComments.length; i++) {
                         // check if this is the  user's comment?
-                        if(vm.allComments[i].user.username === vm.username) {
+                        if(vm.allComments[i].user !== null && vm.allComments[i].user.username === vm.username) {
                             vm.allComments[i].isOwner = true;
                             vm.allComments[i].alreadyGraded = true;
                         } else {

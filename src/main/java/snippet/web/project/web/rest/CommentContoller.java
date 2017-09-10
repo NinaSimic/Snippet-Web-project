@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import snippet.web.project.model.Comment;
+import snippet.web.project.model.Grade;
 import snippet.web.project.model.Snippet;
 import snippet.web.project.model.User;
 import snippet.web.project.model.enumerations.Role;
@@ -118,6 +119,11 @@ public class CommentContoller {
         Comment c = commentService.findById(id);
         if(c == null) {
             return new ResponseEntity<>(new ResponseMessage("Comment with id " + id  + " was not found!"), HttpStatus.NOT_FOUND);
+        }
+
+        List<Grade> grades = gradeRepository.findByComment(c);
+        for(Grade grade : grades) {
+            gradeRepository.delete(grade);
         }
 
         Snippet snippet = c.getSnippet();
